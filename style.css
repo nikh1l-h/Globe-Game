@@ -3,19 +3,28 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    font-size: 200%
+    gap: 20px;
+    height: 100dvh;
+    background-color: #f8ffd0;
+    color: black;
+    font-family: Arial;
+    user-select: none;
 }
 
-button {
-    font-size: 100%;
-    margin-bottom: 2.5%;
+#menu button {
+    font-size: 200%;
     border-radius: 10px;
-    padding-left: 5%;
-    padding-right: 5%;
-    transition-duration: 2s;
+    min-width: 25%;
+    transition-duration: 0.2s;
 }
 
-button:hover {
-    color: red;
+#menu button:hover {
+    background-color: #f9cb9c;
+    min-width: 30%;
 }
+
+#menu h1 {
+    margin: 0;
+    font-size: 400%;
+}
+

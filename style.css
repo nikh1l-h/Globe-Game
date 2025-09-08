@@ -1,4 +1,21 @@
-p {
-    text-align: center;
-    color: red
+#menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 200%
+}
+
+button {
+    font-size: 100%;
+    margin-bottom: 2.5%;
+    border-radius: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
+    transition-duration: 2s;
+}
+
+button:hover {
+    color: red;
 }

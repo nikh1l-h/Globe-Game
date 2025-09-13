@@ -1,3 +1,14 @@
+.hidden {
+    display: none !important;
+}
+
+body {
+    background-color: #f8ffd0;
+    color: black;
+    font-family: Arial;
+    user-select: none;
+}
+
 #menu {
     display: flex;
     flex-direction: column;
@@ -5,10 +16,6 @@
     align-items: center;
     gap: 20px;
     height: 100dvh;
-    background-color: #f8ffd0;
-    color: black;
-    font-family: Arial;
-    user-select: none;
 }
 
 #menu button {
@@ -28,3 +35,36 @@
     font-size: 400%;
 }
 
+#tutorial {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+    gap: 3%
+}
+
+#tutorial button {
+    font-size: 150%;
+    border-radius: 10px;
+    min-width: 20%;
+    transition-duration: 0.2s;
+}
+
+
+#tutorial button:hover {
+    background-color:#f9cb9c;
+    min-width: 25%;
+}
+
+#tutorial h1 {
+    font-size: 400%;
+    margin: 0;
+}
+
+#tutorial p {
+    font-size: 150%;
+    text-align: center;
+    margin: 0;
+    width: 50%
+}

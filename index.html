@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <section id="menu" class="hidden"> <!-- Main menu Screen-->
+    <section id="menu" class = "hidden"> <!-- Main menu Screen-->
         <h1>Globe Game</h1>
         <img src="https://t3.ftcdn.net/jpg/01/70/53/70/360_F_170537095_942g7Zk2TcXplIdXpraxPN1C7YR8kDEk.jpg">
         <button>Tutorial</button>
         <button>Play</button>
     </section>
-    <section id="tutorial"> <!-- Tutorial Screen -->
+    <section id="tutorial" class="hidden" > <!-- Tutorial Screen -->
         <h1>How to Play</h1>
         <p>This is a game about countries.</p>
         <p>Your job is to guess the mystery country before the time limit.</p>
@@ -25,7 +25,11 @@
         <button>Main Menu</button>
     </section>
     <section id="gameplay-screen"> <!-- Gameplay Screen-->
-
+        <p>Time left:</p>
+        <p id = 'timer'>00:00</p>
+        <p>Score:</p>
+        <p id = 'score'>0</p>
+        <input type="text" placeholder="Enter Country...">
     </section>
     <div id="level-complete"> <!-- Level Complete Pop-Up-->
 

@@ -25,11 +25,22 @@
         <button>Main Menu</button>
     </section>
     <section id="gameplay-screen"> <!-- Gameplay Screen-->
-        <p>Time left:</p>
-        <p id = 'timer'>00:00</p>
-        <p>Score:</p>
-        <p id = 'score'>0</p>
+        <div id = 'time-track'>
+            <p>Time left:</p>
+            <p id = 'timer'>00:00</p>
+        </div>
+        
+        <div id="score-track">
+            <p>Score:</p>
+            <p id = 'score'>0</p>
+        </div>
+
         <input type="text" placeholder="Enter Country...">
+
+        <div id = 'guessed-countries'>
+            <p>Guessed Countries:</p>
+            <li></li>
+        </div>
     </section>
     <div id="level-complete"> <!-- Level Complete Pop-Up-->
 

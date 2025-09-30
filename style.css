@@ -1,3 +1,5 @@
+/* GENERAL */
+
 .hidden {
     display: none !important;
 }
@@ -8,6 +10,8 @@ body {
     font-family: Arial;
     user-select: none;
 }
+
+/* MENU*/ 
 
 #menu {
     display: flex;
@@ -34,6 +38,8 @@ body {
     margin: 0;
     font-size: 400%;
 }
+
+/* TUTORIAL */
 
 #tutorial {
     display: flex;
@@ -68,3 +74,6 @@ body {
     margin: 0;
     width: 50%
 }
+
+/* GAMEPLAY SCREEN */
+

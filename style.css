@@ -77,13 +77,15 @@ body {
 
 /* GAMEPLAY SCREEN */
 
-#gameplay-screen {
+#gameplay-screen #HUD-menu {
     display: flex;
     max-width: 100%;
     justify-content: space-between;
     align-items: center;
     padding: 5%;
 }
+
+
 /* #gameplay-screen #time-track{
     display: flex;
     flex-direction: row;

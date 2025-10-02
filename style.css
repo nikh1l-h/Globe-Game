@@ -77,3 +77,24 @@ body {
 
 /* GAMEPLAY SCREEN */
 
+#gameplay-screen {
+    display: flex;
+    max-width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5%;
+}
+/* #gameplay-screen #time-track{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    flex-wrap: wrap;
+}
+
+#gameplay-screen #score-track{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    flex-wrap: wrap;
+    box-sizing:border-box;
+} */

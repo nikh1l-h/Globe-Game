@@ -81,12 +81,12 @@ body {
     display: flex;
     max-width: 100%;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end; /* align items by their bottom edges (makes button align with */
     gap: 10rem;
+    margin-top: 1em;
 }
 
-#gameplay-screen input {
-    width: 20%;
+#country-input {
     height: 5dvh;
     font-size: 150%;
 }
@@ -96,6 +96,7 @@ body {
     flex-direction: column;
     align-items: center;
     font-size: 150%;
+
 }
 
 #gameplay-screen #score, #timer {
@@ -110,3 +111,10 @@ body {
     font-weight: bold;
     font-size: 120%; 
 }
+
+#gameplay-screen #time-track p,
+#gameplay-screen #score-track p {
+    margin: 0.2rem 0;
+    line-height: 1.1; 
+}
+

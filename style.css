@@ -85,7 +85,28 @@ body {
     padding: 5%;
 }
 
+#gameplay-screen input {
+    width: 20%;
+    height: 5dvh;
+    font-size: 150%;
+}
 
+#gameplay-screen #time-track, #score-track {
+    font-size: 150%;
+}
+
+#gameplay-screen #score, #timer {
+    font-size: 200%;
+    font-weight: bold;
+}
+
+#gameplay-screen #guessed-countries {
+    display: flex;
+    justify-content: right;
+    padding: 5%;
+    font-weight: bold;
+    font-size: 120%;
+}
 /* #gameplay-screen #time-track{
     display: flex;
     flex-direction: row;

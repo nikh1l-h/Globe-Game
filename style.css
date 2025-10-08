@@ -79,7 +79,7 @@ body {
 
 #HUD-menu {
     display: flex;
-    max-width: 100%;
+    width: 100%;
     justify-content: center;
     align-items: flex-end; /* align items by their bottom edges */
     gap: 10rem;
@@ -117,3 +117,20 @@ body {
     line-height: 1.1; 
 }
 
+/* Level Complete Pop-up */
+
+#popup {
+    position: relative;
+    /* display: flex;
+    justify-content: center; */
+}
+
+#popuptext {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    top: 20%;
+    left: 50%;
+    background-color: red;
+}

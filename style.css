@@ -28,6 +28,7 @@ body {
     border-radius: 10px;
     min-width: 25%;
     transition-duration: 0.2s;
+    cursor: pointer;
 }
 
 #menu button:hover {
@@ -56,6 +57,7 @@ body {
     border-radius: 10px;
     min-width: 20%;
     transition-duration: 0.2s;
+    cursor: pointer;
 }
 
 
@@ -154,17 +156,19 @@ body {
 #popup button {
     margin-top: 0.5em;
     font-size: 120%;
-    width: 50%;
+    width: 75%;
     padding: 0.5rem;
+    border-radius: 5px;
     transition-duration: 0.2s;
     border: black, solid, 0.05em; 
+    cursor: pointer;
+
 }
 
 #popup button:hover {
     background-color: #f9cb9c;
-    border: none;
     border: black, solid, 0.05em;
-    width: 52%;
+    width: 77%;
 }
 
 #popup-stats p {

@@ -9,6 +9,7 @@ body {
     color: black;
     font-family: Arial;
     user-select: none;
+    max-height: 100dvh;
 }
 
 /* MENU*/ 
@@ -119,18 +120,55 @@ body {
 
 /* Level Complete Pop-up */
 
-#popup {
-    position: relative;
-    /* display: flex;
-    justify-content: center; */
+#level-complete {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: fit-content;
+    height: fit-content;
+    background-color: #d9ead3;
+    border: 0.07em solid black;
+    border-radius: 1em;
+    padding: 1em;
 }
 
-#popuptext {
+
+#popup {
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
-    width: 50%;
-    top: 20%;
-    left: 50%;
-    background-color: red;
+
 }
+
+#popup p {
+    margin: 0.5em;
+    font-size: 150%;
+}
+
+#popup strong {
+    font-size: 180%;
+}
+
+#popup button {
+    margin-top: 0.5em;
+    font-size: 120%;
+    width: 50%;
+    padding: 0.5rem;
+    transition-duration: 0.2s;
+    border: black, solid, 0.05em; 
+}
+
+#popup button:hover {
+    background-color: #f9cb9c;
+    border: none;
+    border: black, solid, 0.05em;
+    width: 52%;
+}
+
+#popup-stats p {
+    margin: 0.1rem;
+    font-weight: 700;
+}
+

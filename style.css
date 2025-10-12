@@ -176,3 +176,43 @@ body {
     font-weight: 700;
 }
 
+/* End Screen */
+
+#end-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100dvh;
+    justify-content: center;
+}
+
+#end-screen h1 {
+    font-size: 400%;
+    margin: 0;
+}
+
+#end-screen p {
+    font-size: 150%;
+}
+
+#end-text {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    align-items: center;
+}
+#end-screen button {
+    font-size: 120%;
+    padding: 5%;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    border-radius: 10px;
+    border: black, solid, 0.06em;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+#end-screen button:hover {
+    background-color:#f9cb9c;
+    width: 110%;
+}

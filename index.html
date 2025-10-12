@@ -24,7 +24,7 @@
         <button>Play</button>
         <button>Main Menu</button>
     </section>
-    <section id="gameplay-screen"> <!-- Gameplay Screen-->
+    <section id="gameplay-screen" class="hidden"> <!-- Gameplay Screen-->
         <div id="HUD-menu">
             <div id = 'time-track'>
                 <p>Time left:</p>
@@ -42,7 +42,7 @@
             <p>Guessed Countries:</p>
         </div>
     </section>
-    <div id="level-complete"> <!-- Level Complete Pop-Up-->
+    <div id="level-complete" class="hidden"> <!-- Level Complete Pop-Up-->
         <div id="popup">
             <p><strong>Level Complete!</strong></p>
             <p>The mystery country was</p>
@@ -55,7 +55,13 @@
         </div>
     </div>
     <section id = "end-screen"> <!-- End Screen-->
-
+        <h1>GAME OVER</h1>
+        <div id="end-text">
+            <p>The final country was </p>
+            <ul class="final-stats"></ul>
+            <button>Press to copy results</button>
+            <button>Press to play again</button>
+        </div>
     </section>
     <script src="script.js"></script>
 </body>

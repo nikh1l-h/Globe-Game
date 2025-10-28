@@ -1,12 +1,12 @@
-class ScreenManager {
-    constructor() {
-        this.screens = { /* object storing all screens (like a python dict) */
-            menu: document.getElementById('menu'), /* key/value pair syntax */
-            tutorial: document.getElementById('tutorial'),
-            gameplayScreen: document.getElementById('gameplay-screen'),
-            endScreen: document.getElementById('end-screen')
-        };
 
-        this.currentScreen = 'menu'; /* start at menu by default */
-    }
+function changePage(currentPageid,nextPageid) {
+    const oldPage = document.getElementById(currentPageid);
+    oldPage.classList.add('hidden');
+
+    const newPage = document.getElementById(nextPageid);
+    newPage.classList.remove('hidden');
 }
+
+main_menu = document.getElementById('play-button');
+main_menu.addEventListener("click", () => changePage('menu','tutorial')); /* first test */
+

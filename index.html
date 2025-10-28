@@ -10,8 +10,8 @@
     <section id="menu"> <!-- Main menu Screen-->
         <h1>Globe Game</h1>
         <img src="https://t3.ftcdn.net/jpg/01/70/53/70/360_F_170537095_942g7Zk2TcXplIdXpraxPN1C7YR8kDEk.jpg">
-        <button>Tutorial</button>
-        <button id="play-button">Play</button>
+        <button data-buttons='tutorial-from-menu'>Tutorial</button>
+        <button data-buttons="play-from-menu">Play</button>
     </section>
     <section id="tutorial" class="hidden" > <!-- Tutorial Screen -->
         <h1>How to Play</h1>
@@ -21,8 +21,8 @@
         <img src="https://www.upshine.com/files/blog/correlated-color-temperature-chart-warm-cold.jpg">
         <p>Good guesses and correct answers will be rewarded with <em>score</em>. The aim is to get the highest score possible without running out of time.</p>
         <p>Enjoy!</p>
-        <button>Play</button>
-        <button>Main Menu</button>
+        <button data-buttons="play-from-tutorial">Play</button>
+        <button data-buttons="menu-from-tutorial">Main Menu</button>
     </section>
     <section id="gameplay-screen" class="hidden"> <!-- Gameplay Screen-->
         <div id="HUD-menu">
@@ -60,7 +60,7 @@
             <p>The final country was </p>
             <ul class="final-stats"></ul>
             <button>Press to copy results</button>
-            <button>Press to play again</button>
+            <button data-buttons="play-again">Press to play again</button>
         </div>
     </section>
     <script src="script.js"></script>

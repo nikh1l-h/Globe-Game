@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <section id="menu"> <!-- Main menu Screen-->
+    <section id="menu" class="hidden"> <!-- Main menu Screen-->
         <h1>Globe Game</h1>
         <img src="https://t3.ftcdn.net/jpg/01/70/53/70/360_F_170537095_942g7Zk2TcXplIdXpraxPN1C7YR8kDEk.jpg">
         <button data-buttons='tutorial-from-menu'>Tutorial</button>
@@ -24,7 +24,7 @@
         <button data-buttons="play-from-tutorial">Play</button>
         <button data-buttons="menu-from-tutorial">Main Menu</button>
     </section>
-    <section id="gameplay-screen" class="hidden"> <!-- Gameplay Screen-->
+    <section id="gameplay-screen"  > <!-- Gameplay Screen-->
         <div id="HUD-menu">
             <div id = 'time-track'>
                 <p>Time left:</p>
@@ -40,6 +40,9 @@
         </div>
         <div id = 'guessed-countries'>
             <p>Guessed Countries:</p>
+        </div>
+        <div id="Globe">
+            
         </div>
     </section>
     <div id="level-complete" class="hidden"> <!-- Level Complete Pop-Up-->
@@ -64,6 +67,28 @@
         </div>
     </section>
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/globe.gl@latest/dist/globe.gl.min.js"></script>
+  <!-- Optionally, TopoJSON if you want to use world map data -->
+  <script src="https://cdn.jsdelivr.net/npm/topojson@3"></script>
+
+  <script>
+    // Create the globe
+    const globe = Globe()(document.getElementById('Globe'))
+      .backgroundColor('#ffffff')
+      .showAtmosphere(false);
+
+    // Example: load country polygons
+    fetch('https://unpkg.com/world-atlas@2/countries-110m.json')
+      .then(res => res.json())
+      .then(world => {
+        const countries = topojson.feature(world, world.objects.countries).features;
+        globe
+          .polygonsData(countries)
+          .polygonCapColor(() => '#808080')
+          .polygonStrokeColor(() => '#ffffff')
+          .polygonAltitude(0.01);
+      });
+  </script>
 </body>
 </html>
 

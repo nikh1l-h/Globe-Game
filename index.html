@@ -69,9 +69,9 @@
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/globe.gl@latest/dist/globe.gl.min.js"></script>
   <!-- Optionally, TopoJSON if you want to use world map data -->
-  <script src="https://cdn.jsdelivr.net/npm/topojson@3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson@3"></script> <!-- this will change too as it is only needed for this bad dataset-->
 
-  <script>
+  <script> // MOVE ALL OF THIS TO ITS OWN FILE ^^ Can it be linked with the stuff above?? yes
     // Create the globe
     const globe = Globe()(document.getElementById('Globe'))
       .backgroundColor('#ffffff')
@@ -79,15 +79,22 @@
       .globeImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-blue-marble.jpg');
 
     // Example: load country polygons
-    fetch('https://unpkg.com/world-atlas@2/countries-110m.json')
+    fetch('https://unpkg.com/world-atlas@2/countries-110m.json') // THIS SHOULD change later to become a better file. Expain justfy
       .then(res => res.json())
       .then(world => {
         const countries = topojson.feature(world, world.objects.countries).features;
-        globe
+        globe // big string of functions added to it. Here is OOP within globe.gl. I can build my own OOP around it
           .polygonsData(countries)
-          .polygonCapColor(() => '#808080')
+          .polygonCapColor(choice => {
+            if (choice.id==='250') { // mention and justify THIS. show solution needed
+                return 'red'
+            } else {
+                return 'grey'
+            } // turn this whole section into a function after the solution is shown. NICE!
+          })
           .polygonStrokeColor(() => '#ffffff')
           .polygonAltitude(0.01);
+          
       });
   </script>
 </body>

@@ -75,7 +75,8 @@
     // Create the globe
     const globe = Globe()(document.getElementById('Globe'))
       .backgroundColor('#ffffff')
-      .showAtmosphere(false);
+      .showAtmosphere(true)
+      .globeImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-blue-marble.jpg');
 
     // Example: load country polygons
     fetch('https://unpkg.com/world-atlas@2/countries-110m.json')

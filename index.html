@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <section id="menu" class="hidden"> <!-- Main menu Screen-->
+    <section id="menu" > <!-- Main menu Screen-->
         <h1>Globe Game</h1>
         <img src="https://t3.ftcdn.net/jpg/01/70/53/70/360_F_170537095_942g7Zk2TcXplIdXpraxPN1C7YR8kDEk.jpg">
         <button data-buttons='tutorial-from-menu'>Tutorial</button>
@@ -24,7 +24,7 @@
         <button data-buttons="play-from-tutorial">Play</button>
         <button data-buttons="menu-from-tutorial">Main Menu</button>
     </section>
-    <section id="gameplay-screen"  > <!-- Gameplay Screen-->
+    <section id="gameplay-screen" class="hidden" > <!-- Gameplay Screen-->
         <div id="HUD-menu">
             <div id = 'time-track'>
                 <p>Time left:</p>
@@ -41,9 +41,7 @@
         <div id = 'guessed-countries'>
             <p>Guessed Countries:</p>
         </div>
-        <div id="Globe">
-            
-        </div>
+        <div id="Main-Globe"> </div>
     </section>
     <div id="level-complete" class="hidden"> <!-- Level Complete Pop-Up-->
         <div id="popup">
@@ -66,37 +64,11 @@
             <button data-buttons="play-again">Press to play again</button>
         </div>
     </section>
-    <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/globe.gl@latest/dist/globe.gl.min.js"></script>
-  <!-- Optionally, TopoJSON if you want to use world map data -->
-  <script src="https://cdn.jsdelivr.net/npm/topojson@3"></script> <!-- this will change too as it is only needed for this bad dataset-->
+    <script src="buttons.js"></script>
 
-  <script> // MOVE ALL OF THIS TO ITS OWN FILE ^^ Can it be linked with the stuff above?? yes
-    // Create the globe
-    const globe = Globe()(document.getElementById('Globe'))
-      .backgroundColor('#ffffff')
-      .showAtmosphere(true)
-      .globeImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-blue-marble.jpg');
-
-    // Example: load country polygons
-    fetch('https://unpkg.com/world-atlas@2/countries-110m.json') // THIS SHOULD change later to become a better file. Expain justfy
-      .then(res => res.json())
-      .then(world => {
-        const countries = topojson.feature(world, world.objects.countries).features;
-        globe // big string of functions added to it. Here is OOP within globe.gl. I can build my own OOP around it
-          .polygonsData(countries)
-          .polygonCapColor(choice => {
-            if (choice.id==='250') { // mention and justify THIS. show solution needed
-                return 'red'
-            } else {
-                return 'grey'
-            } // turn this whole section into a function after the solution is shown. NICE!
-          })
-          .polygonStrokeColor(() => '#ffffff')
-          .polygonAltitude(0.01);
-          
-      });
-  </script>
+    <script src="https://cdn.jsdelivr.net/npm/globe.gl@latest/dist/globe.gl.min.js"></script> <!-- loads globe.gl-->
+    <script src="https://cdn.jsdelivr.net/npm/topojson@3"></script> <!-- loads topojson data-->
+    <script src="globe.js"></script>
 </body>
 </html>
 

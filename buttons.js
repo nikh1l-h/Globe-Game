@@ -1,9 +1,12 @@
-function changePage(currentPageid,nextPageid) {
-    const oldPage = document.getElementById(currentPageid);
-    oldPage.classList.add('hidden');
+function togglePageVisibility(pageid) {
+    const page = document.getElementById(pageid);
+    page.classList.toggle('hidden');
+}
 
-    const newPage = document.getElementById(nextPageid);
-    newPage.classList.remove('hidden');
+
+function changePage(currentPageid,nextPageid) {
+    togglePageVisibility(currentPageid);
+    togglePageVisibility(nextPageid);
 };
 
 

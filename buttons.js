@@ -10,7 +10,7 @@ function changePage(currentPageid,nextPageid) {
 };
 
 
-const actions = {
+const allButtons = {
     'play-from-menu': () => changePage('menu','gameplay-screen'),
     'tutorial-from-menu': () => changePage('menu','tutorial'),
     'play-from-tutorial': () => changePage('tutorial','gameplay-screen'),
@@ -18,7 +18,7 @@ const actions = {
     'play-again': () => changePage('end-screen','menu')
 }
 
-for (const [id,change] of Object.entries(actions)) { // for every key-value pair in allButtons list
+for (const [id,action] of Object.entries(allButtons)) { // for every key-value pair in allButtons list
     const element = document.getElementById(id);
-    element.addEventListener('click', change);
+    element.addEventListener('click', action);
 }

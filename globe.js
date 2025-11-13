@@ -17,7 +17,7 @@ fetch('globe-properties.json')
         .polygonAltitude(0.01)
         .polygonSideColor(()=>'#ffffff')
         .polygonCapColor(choice => {
-            if (choice.id==='124') {  // 250 = country code for France
+            if (choice.id==='250') {  // 250 = country code for France
                 return 'red'
             } else {
             return 'grey'

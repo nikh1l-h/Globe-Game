@@ -6,7 +6,7 @@ const globe = Globe()(document.getElementById('Main-Globe'))
 
 
 
-fetch('countries.json')
+fetch('globe-properties.json')
     .then(res => res.json())
     .then(world => {
         const countries = topojson.feature(world, world.objects.countries).features; // converts topojson to geojson
@@ -25,15 +25,3 @@ fetch('countries.json')
         });
     });
 
-async function WaitForResponse()
-{
-    // Called the prompt
-    return true
-}
-
-async function PromptUser()
-{
-    const result = await WaitForResponse();
-
-    result
-}

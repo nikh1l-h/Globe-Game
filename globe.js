@@ -6,7 +6,7 @@ const globe = Globe()(document.getElementById('Main-Globe'))
 
 
 
-fetch('https://unpkg.com/world-atlas@2/countries-110m.json')
+fetch('countries.json')
     .then(res => res.json())
     .then(world => {
         const countries = topojson.feature(world, world.objects.countries).features; // converts topojson to geojson
@@ -17,7 +17,7 @@ fetch('https://unpkg.com/world-atlas@2/countries-110m.json')
         .polygonAltitude(0.01)
         .polygonSideColor(()=>'#ffffff')
         .polygonCapColor(choice => {
-            if (choice.id==='250') {  // 250 = country code for France
+            if (choice.id==='124') {  // 250 = country code for France
                 return 'red'
             } else {
             return 'grey'
@@ -25,3 +25,15 @@ fetch('https://unpkg.com/world-atlas@2/countries-110m.json')
         });
     });
 
+async function WaitForResponse()
+{
+    // Called the prompt
+    return true
+}
+
+async function PromptUser()
+{
+    const result = await WaitForResponse();
+
+    result
+}

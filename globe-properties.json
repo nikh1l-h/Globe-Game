@@ -339,21 +339,10 @@
         {
           "type": "MultiPolygon",
           "arcs": [
-
-            [[237, 238, 239, 240, 241, 242, 243, 244]],
-            [[245]]
+            [[237, 238, 239, 240, 241, 242, 243, 244]]
           ],
           "id": "250",
           "properties": { "name": "France" }
-        },
-        {
-          "type": "MultiPolygon",
-          "arcs": [
-            [[-200, -236, 236]]
-
-          ],
-          "id": "251",
-          "properties": { "name": "French Guyana" }
         },
         {
           "type": "Polygon",
@@ -947,7 +936,7 @@
         },
         {
           "type": "MultiPolygon",
-          "arcs": [[[-451, 524, 525, -240, -500]], [[526]], [[527]]],
+          "arcs": [[[-451, 524, 525, -240, -500]], [[526]]],
           "id": "380",
           "properties": { "name": "Italy" }
         },
@@ -1079,7 +1068,7 @@
         {
           "type": "Polygon",
           "arcs": [[570, 571]],
-          "properties": { "name": "N. Cyprus" }
+          "properties": { "name": "North Cyprus" }
         },
         {
           "type": "Polygon",
@@ -1174,6 +1163,16 @@
           "arcs": [[-109, -310, -128, -579, -118, -586]],
           "id": "728",
           "properties": { "name": "S. Sudan" }
+        },
+        {
+          "type": "MultiPolygon",
+          "arcs": [
+            [[-200, -236, 236]],
+            [[245]],
+            [[527]]
+          ],
+          "id": "1000",
+          "properties": { "name": "Colonies" }
         }
       ]
     },

@@ -1,7 +1,7 @@
 class Earth {
     constructor() {
 
-        this.globe = Globe()(container) // New Globe is created
+        this.globe = Globe()(document.getElementById('Main-Globe')) // New Globe is created
             .backgroundColor('#ffffff')
             .showAtmosphere(false)
             .globeImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-blue-marble.jpg');

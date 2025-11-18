@@ -5,28 +5,37 @@ class Earth {
             .backgroundColor('#ffffff')
             .showAtmosphere(false)
             .globeImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-blue-marble.jpg');
+        
+        this.countryData = null;
+        this.coloursMap = {}; 
     }
 
-    async init(highlightCountryCode) { // .then and fetch is async therefore we must use init() to load country polygons
+    async init() { // .then and fetch is async therefore we must use init() to load country polygons
         fetch('globe-properties.json')
             .then(res => res.json())
             .then(world => {
-                const countries = topojson.feature(world, world.objects.countries).features; // converts topojson to geojson
+                this.countryData = topojson.feature(world, world.objects.countries).features; // converts topojson to geojson
+
+                this.countryData.forEach(country => { // for every country in the data set
+                    this.coloursMap[country.id] = 'grey' // add it to dict with [iso-numeric code: colour]
+                })
+
                 this.globe 
-                .polygonsData(countries)
+                .polygonsData(this.countryData)
                 .polygonStrokeColor(() => '#ffffff')
                 .polygonAltitude(0.01)
                 .polygonSideColor(()=>'#ffffff')
-                .polygonCapColor(choice => {
-                    if (choice.id===highlightCountryCode) {  // 250 = country code for France
-                        return 'red'
-                    } else {
-                    return 'grey'
-                    } 
-                });
+                .polygonCapColor(country => this.coloursMap[country.id]); // passes country into map to find colour
             });
     } 
+
+    changeCountryColour(iso_code) {
+        this.coloursMap[iso_code] = 'red';
+        console.log(this.coloursMap);
+    }
 }
 
 const newGlobe = new Earth();
-newGlobe.init('250');
+newGlobe.init();
+newGlobe.changeCountryColour('380')
+

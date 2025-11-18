@@ -10,32 +10,36 @@ class Earth {
         this.coloursMap = {}; 
     }
 
-    async init() { // .then and fetch is async therefore we must use init() to load country polygons
-        fetch('globe-properties.json')
-            .then(res => res.json())
-            .then(world => {
-                this.countryData = topojson.feature(world, world.objects.countries).features; // converts topojson to geojson
+    async init() { // await and fetch is async therefore we must use init() to load country polygons rather than constructor
+        const res = await fetch('globe-properties.json');
+        const world = await res.json();
 
-                this.countryData.forEach(country => { // for every country in the data set
-                    this.coloursMap[country.id] = 'grey' // add it to dict with [iso-numeric code: colour]
-                })
+        this.countryData = topojson.feature(world, world.objects.countries).features; // converts topojson to geojson
 
-                this.globe 
-                .polygonsData(this.countryData)
-                .polygonStrokeColor(() => '#ffffff')
-                .polygonAltitude(0.01)
-                .polygonSideColor(()=>'#ffffff')
-                .polygonCapColor(country => this.coloursMap[country.id]); // passes country into map to find colour
-            });
-    } 
+        this.countryData.forEach(country => { // for every country in the data set
+            this.coloursMap[country.id] = 'grey'; // add it to dict with {iso-numeric code: colour}
+        });
+
+        this.globe
+            .polygonsData(this.countryData)
+            .polygonStrokeColor(() => '#ffffff')
+            .polygonAltitude(0.01)
+            .polygonSideColor(() => '#ffffff')
+            .polygonCapColor(country => this.coloursMap[country.id]); // passes country into the colourmap to assign colour
+    }
 
     changeCountryColour(iso_code) {
         this.coloursMap[iso_code] = 'red';
-        console.log(this.coloursMap);
+        this.globe
+        .polygonsData(this.countryData)
+        .polygonCapColor(country => this.coloursMap[country.id]);
     }
 }
 
 const newGlobe = new Earth();
-newGlobe.init();
-newGlobe.changeCountryColour('380')
+newGlobe.init().then(() => {
+    newGlobe.changeCountryColour('380');
+    newGlobe.changeCountryColour('250');
+});
+
 

@@ -28,8 +28,8 @@ class Earth {
             .polygonCapColor(country => this.coloursMap[country.id]); // passes country into the colourmap to assign colour
     }
 
-    changeCountryColour(iso_code) {
-        this.coloursMap[iso_code] = 'red';
+    async changeCountryColour(iso_code, colour) {
+        this.coloursMap[iso_code] = colour;
         this.globe
         .polygonsData(this.countryData)
         .polygonCapColor(country => this.coloursMap[country.id]);
@@ -38,8 +38,9 @@ class Earth {
 
 const newGlobe = new Earth();
 newGlobe.init().then(() => {
-    newGlobe.changeCountryColour('380');
-    newGlobe.changeCountryColour('250');
+    newGlobe.changeCountryColour('250','red'); // code for france
+    newGlobe.changeCountryColour('642','orange'); // code for romania
+
 });
 
 

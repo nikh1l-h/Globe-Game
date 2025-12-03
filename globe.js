@@ -8,6 +8,8 @@ class Earth {
         
         this.countryData = null;
         this.coloursMap = {}; 
+        this.guessedCountries = [];
+        this.mysteryCountry = null;
     }
 
     async init() { // await and fetch is async therefore we must use init() to load country polygons rather than constructor
@@ -17,7 +19,7 @@ class Earth {
         this.countryData = topojson.feature(world, world.objects.countries).features; // converts topojson to geojson
 
         this.countryData.forEach(country => { // for every country in the data set
-            this.coloursMap[country.id] = 'grey'; // add it to dict with {iso-numeric code: colour}
+            this.coloursMap[country.id] = 'grey'; // add it to dict obj with {iso-numeric code: colour}
         });
 
         this.globe
@@ -31,16 +33,28 @@ class Earth {
     async changeCountryColour(iso_code, colour) {
         this.coloursMap[iso_code] = colour;
         this.globe
-        .polygonsData(this.countryData)
-        .polygonCapColor(country => this.coloursMap[country.id]);
+            .polygonsData(this.countryData)
+            .polygonCapColor(country => this.coloursMap[country.id]);
+        
+        this.guessedCountries.push(iso_code)
+    }
+
+    resetGlobe() {
+        this.guessedCountries.forEach(item => {
+            this.coloursMap[item] = 'grey'
+        
+        this.guessedCountries = []
+        this.mysteryCountry = null
+        })
     }
 }
 
 const newGlobe = new Earth();
 newGlobe.init().then(() => {
-    newGlobe.changeCountryColour('250','red'); // code for france
-    newGlobe.changeCountryColour('642','orange'); // code for romania
-
+    newGlobe.changeCountryColour('250','red');
+    newGlobe.changeCountryColour('642','orange'); 
+    newGlobe.resetGlobe();
+    newGlobe.changeCountryColour('440','purple'); // colour lithuania purple
 });
 
 

@@ -32,9 +32,9 @@ class Earth {
 
     async changeCountryColour(iso_code, colour) {
         this.coloursMap[iso_code] = colour;
-        this.globe
-            .polygonsData(this.countryData)
-            .polygonCapColor(country => this.coloursMap[country.id]);
+        // this.globe < i dont think this is needed check later
+        //     .polygonsData(this.countryData)
+        //     .polygonCapColor(country => this.coloursMap[country.id]);
         
         this.guessedCountries.push(iso_code)
     }
@@ -42,11 +42,15 @@ class Earth {
     resetGlobe() {
         this.guessedCountries.forEach(item => {
             this.coloursMap[item] = 'grey'
-        
-        this.guessedCountries = []
-        this.mysteryCountry = null
-        })
+        });
+        this.guessedCountries = [];
+        this.mysteryCountry = null;
     }
+
+    chooseMysteryCountry() {}
+
+    calculateCountryDistance() {}
+
 }
 
 const newGlobe = new Earth();
@@ -54,7 +58,5 @@ newGlobe.init().then(() => {
     newGlobe.changeCountryColour('250','red');
     newGlobe.changeCountryColour('642','orange'); 
     newGlobe.resetGlobe();
-    newGlobe.changeCountryColour('440','purple'); // colour lithuania purple
+    newGlobe.changeCountryColour('440','purple'); // colour lithuania purple 
 });
-
-

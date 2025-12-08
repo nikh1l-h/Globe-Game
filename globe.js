@@ -45,7 +45,7 @@ class Earth {
 
     chooseMysteryCountry() {
         const possibleCountries = Object.keys(this.coloursMap); // converts the coloursMap into array with only iso-codes
-        const randomIndex = Math.floor(Math.random()*countryIds.length);
+        const randomIndex = Math.floor(Math.random()*possibleCountries.length);
         this.mysteryCountry = possibleCountries[randomIndex];
     }
 
@@ -58,7 +58,8 @@ newGlobe.init().then(() => {
     newGlobe.changeCountryColour('250','red');
     newGlobe.changeCountryColour('642','orange'); 
     newGlobe.resetGlobe();
-    newGlobe.changeCountryColour('440','purple'); // colour lithuania purple 
     newGlobe.chooseMysteryCountry();
+    newGlobe.changeCountryColour(newGlobe.mysteryCountry,'purple'); // colour lithuania purple 
+    
     console.log(newGlobe.mysteryCountry);
 });

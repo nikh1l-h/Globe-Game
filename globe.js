@@ -49,8 +49,17 @@ class Earth {
         this.mysteryCountry = possibleCountries[randomIndex];
     }
 
-    calculateCountryDistance() {}
-
+    calculateCountryDistance(countryId) {
+        let index = 0;
+        this.countryData.forEach(country => { // finds the index of the geometries array that the country is stored in
+            if (country['id'] === countryId) {
+                console.log(index);
+            } else {
+                index = index+1;
+            }
+        })
+    }
+        
 }
 
 const newGlobe = new Earth();
@@ -60,6 +69,7 @@ newGlobe.init().then(() => {
     newGlobe.resetGlobe();
     newGlobe.chooseMysteryCountry();
     newGlobe.changeCountryColour(newGlobe.mysteryCountry,'purple'); // colour lithuania purple 
+    newGlobe.calculateCountryDistance('834');
     
     console.log(newGlobe.mysteryCountry);
 });

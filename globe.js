@@ -53,6 +53,10 @@ class Earth {
         const guess = latLongData.find(item => item.id === guessId); // finds all data for inputted country
         const mystery = latLongData.find(item => item.id === this.mysteryCountryId); // finds all data for the mystery country
 
+        if (guess.id === mystery.id) {
+            return 0 // user has guessed correctly, distance between countries is 0
+        }
+
         // defining data needed for calculation
         const guessLat = (parseFloat(guess.latitude)) * Math.PI / 180; // lat and long data must be in radians
         const guessLong = (parseFloat(guess.longitude)) * Math.PI / 180;
@@ -67,6 +71,23 @@ class Earth {
         const c = 2 * Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
         const distance = c * earthRadius;
         return distance;
+    }
+
+    AssignColourGivenDistance(guessId, distance) {
+
+        if (distance === 0) { // if the user has guessed correctly
+            this.changeCountryColour(guessId,'green')
+            return True
+        }
+
+        const maxDistance = 20015 // distance between north/south pole
+        const guessRating = distance / maxDistance // gives a decimal to show how close guess is
+
+        if (guessRating >= 0.5) {
+            multiplier = (percentage-0.5) * 2 // expresses guessRating as a % how close from the middle of the gradient to the end
+            // finish this   
+        } else {}
+
     }
         
 }

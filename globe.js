@@ -52,7 +52,6 @@ class Earth {
         const latLongData = this.world.objects.countries.geometries; // extracts only full data about countries from json file
         const guess = latLongData.find(item => item.id === guessId); // finds all data for inputted country
         const mystery = latLongData.find(item => item.id === this.mysteryCountryId); // finds all data for the mystery country
-
         if (guess.id === mystery.id) {
             return 0 // user has guessed correctly, distance between countries is 0
         }
@@ -77,26 +76,48 @@ class Earth {
 
         if (distance === 0) { // if the user has guessed correctly
             this.changeCountryColour(guessId,'green')
-            return True
+            return True // exits function early
+        }
+        const startRGB = [255,255,245]; // rgb for start point in gradient
+        const startToMidGBChange = [-255,-245]; // change in green/blue from start to mid point in gradient
+        const MidToFinalRChange = -155; // change in red from mid to final point in gradient
+
+        const maxDistance = 20015; // distance between north/south pole
+        const guessRating = 1-(distance / maxDistance); // gives a decimal to show how close guess is
+        let r,g,b;
+
+        // calculating the colour it should be
+        if (guessRating >= 0.5) {
+            let multiplier = (guessRating-0.5) * 2; // expresses guessRating as a % how close from the middle of the gradient to the end
+            r = startRGB[0] + Math.floor(MidToFinalRChange * multiplier);
+            g = 0;
+            b = 0; 
+        } else {
+            let multiplier = guessRating*2;
+            r = 255;
+            g = startRGB[1] + Math.floor(startToMidGBChange[0]*multiplier);
+            b = startRGB[2] + Math.floor(startToMidGBChange[1]*multiplier);
         }
 
-        const maxDistance = 20015 // distance between north/south pole
-        const guessRating = distance / maxDistance // gives a decimal to show how close guess is
-
-        if (guessRating >= 0.5) {
-            multiplier = (percentage-0.5) * 2 // expresses guessRating as a % how close from the middle of the gradient to the end
-            // finish this   
-        } else {}
-
+        let finalHEX = [];
+        // converting rgb to hex 
+        [r,g,b].forEach(colour => {
+            let hexColour = colour.toString(16);
+            if (hexColour.length == 1) { // single digit numbers must be padded with leading 0s. (0 -> 00)
+                hexColour = '0'.concat(hexColour);
+            }
+            finalHEX.push(hexColour);
+        })
+        finalHEX = '#'.concat(finalHEX[0]).concat(finalHEX[1]).concat(finalHEX[2]);
+        this.changeCountryColour(guessId,finalHEX)
     }
         
 }
 
 const newGlobe = new Earth();
 newGlobe.init().then(() => {
-    newGlobe.changeCountryColour('826','red');
-    newGlobe.chooseMysteryCountry();
-    newGlobe.changeCountryColour(newGlobe.mysteryCountryId,'red');
-    console.log(newGlobe.calculateCountryDistance('826'));
+    newGlobe.mysteryCountryId = '250';
+    const x = newGlobe.calculateCountryDistance('036');
+    newGlobe.AssignColourGivenDistance('036',x);
 
 });

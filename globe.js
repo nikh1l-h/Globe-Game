@@ -128,20 +128,6 @@ class Earth {
 const newGlobe = new Earth();
 newGlobe.init().then(() => {
     newGlobe.chooseMysteryCountry();
-    
-    // temporary code to generate the country name to iso grid
-    const allData = newGlobe.world.objects.countries.geometries;
-    const nametoiso = {}
-    allData.forEach(item => {
-        if (item.hasOwnProperty('id')) {
-            let countryName = item.properties.name.toLowerCase();
-            let countryID = item.id;
-            nametoiso[countryName] = countryID
-        }
-        
-    })
-
-    console.log(JSON.stringify(nametoiso, null, 2))
 
 
 });

@@ -32,6 +32,9 @@ class Earth {
     changeCountryColour(iso_code, colour) {
         this.coloursMap[iso_code] = colour;
         this.guessedCountries.push(iso_code);
+        this.globe
+            .polygonsData(this.countryData)
+            .polygonCapColor(country => this.coloursMap[country.id]);
     }
 
     resetGlobe() {
@@ -77,7 +80,7 @@ class Earth {
 
         if (distance === 0) { // if the user has guessed correctly
             this.changeCountryColour(guessId,'green')
-            return True // exits function early
+            return true // exits function early
         }
 
         const startRGB = [232,250,255]; // rgb for start point in gradient
@@ -124,16 +127,21 @@ class Earth {
 
 const newGlobe = new Earth();
 newGlobe.init().then(() => {
-    newGlobe.mysteryCountryId = '250';
-    // const x = newGlobe.calculateCountryDistance('380');
-    newGlobe.AssignColourGivenDistance('180');
-    newGlobe.AssignColourGivenDistance('710');
-    newGlobe.AssignColourGivenDistance('140');
-    newGlobe.AssignColourGivenDistance('504');
-    newGlobe.AssignColourGivenDistance('562');
-    newGlobe.AssignColourGivenDistance('012');
-    newGlobe.AssignColourGivenDistance('724');
-    newGlobe.AssignColourGivenDistance('250');
+    newGlobe.chooseMysteryCountry();
+    
+    // temporary code to generate the country name to iso grid
+    const allData = newGlobe.world.objects.countries.geometries;
+    const nametoiso = {}
+    allData.forEach(item => {
+        if (item.hasOwnProperty('id')) {
+            let countryName = item.properties.name.toLowerCase();
+            let countryID = item.id;
+            nametoiso[countryName] = countryID
+        }
+        
+    })
+
+    console.log(JSON.stringify(nametoiso, null, 2))
 
 
 });

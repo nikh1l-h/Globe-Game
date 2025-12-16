@@ -94,6 +94,7 @@ const nameToIso = {
     "united arab emirates": "784",
     "qatar": "634",
     "kuwait": "414",
+    "kosovo": "383",
     "iraq": "368",
     "oman": "512",
     "vanuatu": "548",

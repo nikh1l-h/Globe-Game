@@ -176,7 +176,9 @@
           "type": "Polygon",
           "arcs": [[120, 121, 122, 123, 124, 125, 126, 127]],
           "id": "729",
-          "properties": { "name": "Sudan" }
+          "properties": { "name": "Sudan" },
+          "latitude": "12.8628",
+          "longitude": "30.2176"
         },
         {
           "type": "Polygon",
@@ -1490,7 +1492,10 @@
         {
           "type": "Polygon",
           "arcs": [[-493, -594, -591, -589]],
-          "properties": { "name": "Kosovo" }
+          "properties": { "name": "Kosovo" },
+          "id": "383",
+          "latitude": "42.56231",
+          "longitude":"20.890416"
         },
         {
           "type": "Polygon",
@@ -1515,7 +1520,6 @@
             [[245]],
             [[527]]
           ],
-          "id": "1000",
           "properties": { "name": "Colonies" }
         }
       ]

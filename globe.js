@@ -16,6 +16,7 @@ class Earth {
         const res = await fetch('globe-properties.json');
         this.world = await res.json();
         this.countryData = topojson.feature(this.world, this.world.objects.countries).features; // converts topojson to geojson
+        this.latLongData = this.world.objects.countries.geometries; // extracts only full data about countries from json file
 
         this.countryData.forEach(country => { // for every country in the data set
             this.coloursMap[country.id] = 'grey'; // add it to dict obj with {iso-numeric code: colour}
@@ -52,9 +53,9 @@ class Earth {
     }
 
     calculateCountryDistance(guessId) {
-        const latLongData = this.world.objects.countries.geometries; // extracts only full data about countries from json file
-        const guess = latLongData.find(item => item.id === guessId); // finds all data for inputted country
-        const mystery = latLongData.find(item => item.id === this.mysteryCountryId); // finds all data for the mystery country
+        
+        const guess = this.latLongData.find(item => item.id === guessId); // finds all data for inputted country
+        const mystery = this.latLongData.find(item => item.id === this.mysteryCountryId); // finds all data for the mystery country
         if (guess.id === mystery.id) {
             return 0 // user has guessed correctly, distance between countries is 0
         }
@@ -123,11 +124,16 @@ class Earth {
         finalHEX = '#'.concat(finalHEX[0]).concat(finalHEX[1]).concat(finalHEX[2]);
         return finalHEX;
     }
+
+    rotateCameraToCountry(iso_code) {
+        const country = this.latLongData.find(item => item.id === iso_code);
+        const countryLat = parseFloat(country.latitude)
+        const countryLong = parseFloat(country.longitude)
+        this.globe.pointOfView({lat: countryLat, lng: countryLong, altitude: 2}, 500);
+    }
 }
 
 const newGlobe = new Earth();
 newGlobe.init().then(() => {
     newGlobe.chooseMysteryCountry();
-
-
 });

@@ -3,6 +3,8 @@ const nameToIso = {
     "tanzania": "834",
     "western sahara": "732",
     "canada": "124",
+    "usa": "840",
+    "us": "840",
     "united states of america": "840",
     "kazakhstan": "398",
     "uzbekistan": "860",
@@ -10,6 +12,7 @@ const nameToIso = {
     "indonesia": "360",
     "argentina": "032",
     "chile": "152",
+    "drc": '180',
     "democratic republic of the congo": "180",
     "somalia": "706",
     "kenya": "404",
@@ -23,6 +26,7 @@ const nameToIso = {
     "norway": "578",
     "greenland": "304",
     "french southern and antarctic lands": "260",
+    "east timor": "626",
     "timor-leste": "626",
     "south africa": "710",
     "lesotho": "426",
@@ -59,12 +63,15 @@ const nameToIso = {
     "cameroon": "120",
     "togo": "768",
     "ghana": "288",
+    "ivory coast": "384",
+    "cote d'ivoire": "384",
     "côte d'ivoire": "384",
     "guinea": "324",
     "guinea-bissau": "624",
     "liberia": "430",
     "sierra leone": "694",
     "burkina faso": "854",
+    "car": "140",
     "central african republic": "140",
     "congo": "178",
     "gabon": "266",
@@ -83,6 +90,7 @@ const nameToIso = {
     "tunisia": "788",
     "algeria": "012",
     "jordan": "400",
+    "uae": "784",
     "united arab emirates": "784",
     "qatar": "634",
     "kuwait": "414",
@@ -123,6 +131,8 @@ const nameToIso = {
     "germany": "276",
     "bulgaria": "100",
     "greece": "300",
+    "turkiye": "792",
+    "türkiye": "792",
     "turkey": "792",
     "albania": "008",
     "croatia": "191",
@@ -142,6 +152,7 @@ const nameToIso = {
     "taiwan": "158",
     "italy": "380",
     "denmark": "208",
+    "uk": "826",
     "united kingdom": "826",
     "iceland": "352",
     "azerbaijan": "031",
@@ -167,10 +178,14 @@ const nameToIso = {
     "djibouti": "262",
     "uganda": "800",
     "rwanda": "646",
+    "bosnia": "070",
+    "herzegovina": "070",
     "bosnia and herzegovina": "070",
     "macedonia": "807",
     "serbia": "688",
     "montenegro": "499",
+    "trinidad": "780",
+    "tobago": "780",
     "trinidad and tobago": "780",
     "south sudan": "728"
 }
@@ -209,12 +224,17 @@ function convertCountryNametoCode(countryName) {
     }
     
 }
+
 const guessBox = document.getElementById('guess-input');
 guessBox.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
         let userGuess = guessBox.value;
         guessBox.value = '';
         let countryCode = convertCountryNametoCode(userGuess)
-        newGlobe.AssignColourGivenDistance(countryCode);
+        if (countryCode != false) {
+            newGlobe.AssignColourGivenDistance(countryCode);
+            newGlobe.rotateCameraToCountry(countryCode)
+        }
+        
     }
 })

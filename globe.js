@@ -77,13 +77,29 @@ class Earth {
     }
 
     AssignColourGivenDistance(guessId) {
+
+        // handling if user guess is adjacent to the answer
+        const guessedCountry = this.latLongData.find(item => item.id === guessId);
+        const borderIds = guessedCountry['borderIds']
+        if (borderIds.length > 0) {
+            for (let i=0; i< borderIds.length; i++) {
+                console.log(borderIds[i])
+                if (borderIds[i] === this.mysteryCountryId) {
+                    this.changeCountryColour(guessId,'#8f0013');
+                    return true
+                }
+            }
+        }
+
         const distance = this.calculateCountryDistance(guessId);
 
-        if (distance === 0) { // if the user has guessed correctly
+        // handling if user guesses correctly
+        if (distance === 0) { 
             this.changeCountryColour(guessId,'green')
             return true // exits function early
         }
 
+        // handling bad guess
         const startRGB = [232,250,255]; // rgb for start point in gradient
         const midRGB = [255,210,112];
         const startToMidRGBChange = [23, -40, -143]; // change in green/blue from start to mid point in gradient
@@ -129,11 +145,11 @@ class Earth {
         const country = this.latLongData.find(item => item.id === iso_code);
         const countryLat = parseFloat(country.latitude)
         const countryLong = parseFloat(country.longitude)
-        this.globe.pointOfView({lat: countryLat, lng: countryLong, altitude: 2}, 500);
+        this.globe.pointOfView({lat: countryLat, lng: countryLong}, 500);
     }
 }
 
 const newGlobe = new Earth();
 newGlobe.init().then(() => {
-    newGlobe.chooseMysteryCountry();
+    newGlobe.mysteryCountryId = '250';
 });

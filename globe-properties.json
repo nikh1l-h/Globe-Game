@@ -570,7 +570,7 @@
           "properties": { "name": "Mauritania" },
           "latitude": "20",
           "longitude": "-12",
-          "borderIds": ["012", "466", "686", ""]
+          "borderIds": ["012", "466", "686"]
         },
         {
           "type": "Polygon",
@@ -831,7 +831,7 @@
           "properties": { "name": "Algeria" },
           "latitude": "28",
           "longitude": "3",
-          "borderIds": ["434", "466", "478", "504", "562", "788", ""]
+          "borderIds": ["434", "466", "478", "504", "562", "788"]
         },
         {
           "type": "Polygon",
@@ -1380,7 +1380,7 @@
           "properties": { "name": "Italy" },
           "latitude": "42.8333",
           "longitude": "12.8333",
-          "borderIds": ["040", "250", "674", "705", "756", ""]
+          "borderIds": ["040", "250", "674", "705", "756"]
         },
         {
           "type": "MultiPolygon",
@@ -1577,7 +1577,7 @@
           "properties": { "name": "Morocco" },
           "latitude": "32",
           "longitude": "-5",
-          "borderIds": ["012", "724", ""]
+          "borderIds": ["012", "724"]
         },
         {
           "type": "Polygon",

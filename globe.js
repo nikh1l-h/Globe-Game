@@ -151,5 +151,5 @@ class Earth {
 
 const newGlobe = new Earth();
 newGlobe.init().then(() => {
-    newGlobe.mysteryCountryId = '250';
+    newGlobe.chooseMysteryCountry();
 });

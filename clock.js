@@ -10,7 +10,7 @@ class Clock {
     }
 
     startTimer() {
-        setInterval(this.tick(),1000);
+        setInterval(() => this.tick(),1000);
     }
 
     checkClockEnd() {
@@ -21,9 +21,9 @@ class Clock {
         const seconds = this.timeLeft % 60;
         const minutes = Math.floor(this.timeLeft/ 60); // integer division 
         this.timerElement.innerText = (minutes.toString()).concat(":",(seconds.toString()));
-        console.log(this.timeLeft);
         this.timeLeft--;
     }
 }  
 
-const timer=new Clock();
+const timer = new Clock()
+timer.startTimer()

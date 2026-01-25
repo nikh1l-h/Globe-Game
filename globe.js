@@ -13,7 +13,7 @@ class Earth {
     }
 
     async init() { // await and fetch is async therefore we must use init() to load country polygons rather than constructor
-        const res = await fetch('globe-properties.json');
+        const res = await fetch('50m-ne.json');
         this.world = await res.json();
         this.countryData = topojson.feature(this.world, this.world.objects.countries).features; // converts topojson to geojson
         this.latLongData = this.world.objects.countries.geometries; // extracts only full data about countries from json file
@@ -21,6 +21,9 @@ class Earth {
         this.countryData.forEach(country => { // for every country in the data set
             this.coloursMap[country.id] = 'grey'; // add it to dict obj with {iso-numeric code: colour}
         });
+
+        console.log(this.countryData.length)
+        console.log(this.coloursMap)
 
         this.globe
             .polygonsData(this.countryData)

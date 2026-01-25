@@ -201,7 +201,9 @@ function changePage(currentPageid,nextPageid) {
 
 
 const allButtons = {
-    'play-from-menu': () => changePage('menu','gameplay-screen'),
+    'play-from-menu': () => {
+        changePage('menu','gameplay-screen')
+        timer.startTimer()},
     'tutorial-from-menu': () => changePage('menu','tutorial'),
     'play-from-tutorial': () => changePage('tutorial','gameplay-screen'),
     'menu-from-tutorial': () => changePage('tutorial', 'menu'),

@@ -22,9 +22,6 @@ class Earth {
             this.coloursMap[country.id] = 'grey'; // add it to dict obj with {iso-numeric code: colour}
         });
 
-        console.log(this.countryData.length)
-        console.log(this.coloursMap)
-
         this.globe
             .polygonsData(this.countryData)
             .polygonStrokeColor(() => '#ffffff')
@@ -99,6 +96,7 @@ class Earth {
         // handling if user guesses correctly
         if (distance === 0) { 
             this.changeCountryColour(guessId,'green')
+            timer.clockEnd()
             return true // exits function early
         }
 

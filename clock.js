@@ -1,24 +1,26 @@
 class Clock {
     constructor() {
 
-        this.timeLeft = 10;
+        this.timeLeft = 25; // 25 is FUN and POSSIBLE
         this.timerElement = document.getElementById('timer');
         this.interval = null;
     }
 
     calcStartTime(level) {
+        if (level > 7) {
 
+        }
+        if (level > 1) {
+
+        }
     }
 
     startTimer() {
         this.interval = setInterval(() => this.tick(),1000);
     }
 
-    checkClockEnd() {
-        if (this.timeLeft === 0) {
-            clearInterval(this.interval); // stops timer from ticking down 
-            console.log('it worked')
-        }
+    clockEnd() {
+        clearInterval(this.interval);
     }
 
     tick() {
@@ -31,7 +33,9 @@ class Clock {
         };
         this.timerElement.innerText = minutes.concat(":",seconds);
 
-        this.checkClockEnd()
+        if (this.timeLeft === 0) {
+            this.clockEnd()
+        }
 
     }
 }  

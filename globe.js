@@ -95,8 +95,8 @@ class Earth {
 
         // handling if user guesses correctly
         if (distance === 0) { 
-            this.changeCountryColour(guessId,'green')
-            timer.clockEnd()
+            this.changeCountryColour(guessId,'green');
+            timer.stopTimer();
             return true // exits function early
         }
 
@@ -124,7 +124,7 @@ class Earth {
         }
 
         let finalHEX = this.convertRgbToHex(r, g, b);
-        this.changeCountryColour(guessId,finalHEX)
+        this.changeCountryColour(guessId,finalHEX);
     }
         
 

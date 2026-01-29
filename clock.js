@@ -7,11 +7,16 @@ class Clock {
     }
 
     calcStartTime(level) {
-        if (level > 7) {
-
-        }
-        if (level > 1) {
-
+        if (level < 7) {
+            this.timeLeft = 300 - (50 * (level-1));
+        } else if (level === 7) {
+            this.timeLeft = 40;
+        } else if (level === 8) {
+            this.timeLeft = 30;
+        } else if (level === 9) {
+            this.timeLeft = 25;
+        } else {
+            this.timeLeft = 20;
         }
     }
 
@@ -19,7 +24,7 @@ class Clock {
         this.interval = setInterval(() => this.tick(),1000);
     }
 
-    clockEnd() {
+    stopTimer() {
         clearInterval(this.interval);
     }
 
@@ -34,7 +39,7 @@ class Clock {
         this.timerElement.innerText = minutes.concat(":",seconds);
 
         if (this.timeLeft === 0) {
-            this.clockEnd()
+            this.stopTimer()
         }
 
     }
@@ -42,4 +47,5 @@ class Clock {
 
 const timer = new Clock()
 timer.startTimer()
+timer.calcStartTime(5)
 

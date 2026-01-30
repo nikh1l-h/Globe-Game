@@ -196,23 +196,18 @@ function togglePageVisibility(pageid) {
 }
 
 
-function changePage(currentPageid,nextPageid) {
+function changePage(currentPageid,nextPageid) { // swaps what page is on screen
     togglePageVisibility(currentPageid);
     togglePageVisibility(nextPageid);
 };
 
 
-const allButtons = {
+const allButtons = { // lists the id of every button in the game and the action that they should do
     'play-from-menu': () => changePage('menu','gameplay-screen'),
     'tutorial-from-menu': () => changePage('menu','tutorial'),
     'play-from-tutorial': () => changePage('tutorial','gameplay-screen'),
     'menu-from-tutorial': () => changePage('tutorial', 'menu'),
     'play-again': () => changePage('end-screen','menu')
-}
-
-for (const [id,action] of Object.entries(allButtons)) { // for every key-value pair in allButtons list
-    const element = document.getElementById(id);
-    element.addEventListener('click', action);
 }
 
 function convertCountryNametoCode(countryName) {
@@ -225,13 +220,20 @@ function convertCountryNametoCode(countryName) {
     
 }
 
+for (const [id,action] of Object.entries(allButtons)) { // for every key-value pair in allButtons list
+    const element = document.getElementById(id);
+    element.addEventListener('click', action);
+}
+
+
+
 const guessBox = document.getElementById('guess-input');
 guessBox.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter') { // checks for user finishing their guess
         let userGuess = guessBox.value.toLowerCase();
-        guessBox.value = '';
+        guessBox.value = ''; // resets the guessBox to remove user guess from screen
         let countryCode = convertCountryNametoCode(userGuess)
-        if (countryCode != false) {
+        if (countryCode != false) { // if guess is valid
             newGlobe.AssignColourGivenDistance(countryCode);
             newGlobe.rotateCameraToCountry(countryCode)
         }

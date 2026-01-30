@@ -19,7 +19,7 @@ class Earth {
         this.latLongData = this.world.objects.countries.geometries; // extracts only full data about countries from json file
 
         this.countryData.forEach(country => { // for every country in the data set
-            this.coloursMap[country.id] = 'grey'; // add it to dict obj with {iso-numeric code: colour}
+            this.coloursMap[country.id] = this.AssignColourGivenDistance(country.id); // add it to dict obj with {iso-numeric code: colour}
         });
 
         this.globe

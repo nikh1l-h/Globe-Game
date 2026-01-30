@@ -166,6 +166,7 @@ const nameToIso = {
     "japan": "392",
     "paraguay": "600",
     "yemen": "887",
+    "saudi": "682",
     "saudi arabia": "682",
     "antarctica": "010",
     "cyprus": "196",
@@ -179,6 +180,7 @@ const nameToIso = {
     "bosnia": "070",
     "herzegovina": "070",
     "bosnia and herzegovina": "070",
+    "north macedonia": "807",
     "macedonia": "807",
     "serbia": "688",
     "montenegro": "499",
@@ -226,7 +228,7 @@ function convertCountryNametoCode(countryName) {
 const guessBox = document.getElementById('guess-input');
 guessBox.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
-        let userGuess = guessBox.value;
+        let userGuess = guessBox.value.toLowerCase();
         guessBox.value = '';
         let countryCode = convertCountryNametoCode(userGuess)
         if (countryCode != false) {

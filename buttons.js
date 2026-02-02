@@ -100,6 +100,7 @@ const nameToIso = {
     "cambodia": "116",
     "thailand": "764",
     "laos": "418",
+    "burma":"104",
     "myanmar": "104",
     "vietnam": "704",
     "north korea": "408",
@@ -162,6 +163,7 @@ const nameToIso = {
     "finland": "246",
     "slovakia": "703",
     "czechia": "203",
+    "czech republic":"203",
     "eritrea": "232",
     "japan": "392",
     "paraguay": "600",
@@ -232,6 +234,10 @@ function convertCountryNametoCode(countryName) {
     
 }
 
+function checkFirstGuess() {
+
+}
+
 const guessBox = document.getElementById('guess-input');
 guessBox.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') { // checks for user finishing their guess
@@ -239,6 +245,7 @@ guessBox.addEventListener('keydown', (event) => {
         guessBox.value = ''; // resets the guessBox to remove user guess from screen
         let countryCode = convertCountryNametoCode(userGuess)
         if (countryCode != false) { // if guess is valid
+            checkFirstGuess();
             newGlobe.AssignColourGivenDistance(countryCode);
             newGlobe.rotateCameraToCountry(countryCode)
         }

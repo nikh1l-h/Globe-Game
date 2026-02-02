@@ -39,8 +39,8 @@ class Clock {
         this.timerElement.innerText = minutes.concat(":",seconds);
 
         if (this.timeLeft === 0) {
-            this.stopTimer()
-        }
+            this.stopTimer();
+        };
 
     }
 }  

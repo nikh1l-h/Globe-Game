@@ -203,12 +203,24 @@ function changePage(currentPageid,nextPageid) { // swaps what page is on screen
 
 
 const allButtons = { // lists the id of every button in the game and the action that they should do
-    'play-from-menu': () => changePage('menu','gameplay-screen'),
+    'play-from-menu': () => {
+        changePage('menu','gameplay-screen');
+        togglePageVisibility('guessed-countries');
+    },
+    'play-from-tutorial': () => {
+        changePage('tutorial','gameplay-screen');
+        togglePageVisibility('guessed-countries');
+    },
     'tutorial-from-menu': () => changePage('menu','tutorial'),
-    'play-from-tutorial': () => changePage('tutorial','gameplay-screen'),
     'menu-from-tutorial': () => changePage('tutorial', 'menu'),
     'play-again': () => changePage('end-screen','menu')
 }
+
+for (const [id,action] of Object.entries(allButtons)) { // for every key-value pair in allButtons list
+    const element = document.getElementById(id);
+    element.addEventListener('click', action);
+}
+
 
 function convertCountryNametoCode(countryName) {
     if (countryName in nameToIso) {
@@ -219,13 +231,6 @@ function convertCountryNametoCode(countryName) {
     }
     
 }
-
-for (const [id,action] of Object.entries(allButtons)) { // for every key-value pair in allButtons list
-    const element = document.getElementById(id);
-    element.addEventListener('click', action);
-}
-
-
 
 const guessBox = document.getElementById('guess-input');
 guessBox.addEventListener('keydown', (event) => {

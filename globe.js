@@ -2,8 +2,10 @@ class Earth {
     constructor() {
 
         this.globe = Globe()(document.getElementById('Main-Globe')) // New Globe is created
-            .backgroundColor('#ffffff')
+            .backgroundColor('#f8ffd0')
             .showAtmosphere(false)
+            .width(window.innerWidth)
+            .height(Math.floor(window.innerHeight*0.9))
             .globeImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-blue-marble.jpg');
         
         this.countryData = null;

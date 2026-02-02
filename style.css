@@ -20,7 +20,6 @@ body {
     justify-content: center;
     align-items: center;
     gap: 20px;
-    height: 100dvh;
 }
 
 #menu button {
@@ -80,15 +79,27 @@ body {
 
 /* GAMEPLAY SCREEN */
 
+#gameplay-screen {
+    max-height: 100dvh;
+}
+#Main-Globe {
+    display:flex;
+    justify-content:center;
+}
+
 #HUD-menu {
     display: flex;
     width: 100%;
+    min-height: 10vh;
     justify-content: center;
     align-items: flex-end; /* align items by their bottom edges */
     gap: 10rem;
     margin-top: 1em;
 }
 
+#country-button {
+    height: 5dvh;
+}
 #country-input {
     height: 5dvh;
     font-size: 150%;

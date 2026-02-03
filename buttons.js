@@ -247,7 +247,8 @@ guessBox.addEventListener('keydown', (event) => {
         if (countryCode != false) { // if guess is valid
             checkFirstGuess();
             newGlobe.AssignColourGivenDistance(countryCode);
-            newGlobe.rotateCameraToCountry(countryCode)
+            newGlobe.rotateCameraToCountry(countryCode);
+            
         }
         
     }

@@ -85,7 +85,6 @@ class Earth {
         const borderIds = guessedCountry['borderIds']
         if (borderIds.length > 0) {
             for (let i=0; i< borderIds.length; i++) {
-                console.log(borderIds[i])
                 if (borderIds[i] === this.mysteryCountryId) {
                     this.changeCountryColour(guessId,'#8f0013');
                     return true
@@ -149,6 +148,13 @@ class Earth {
         const countryLat = parseFloat(country.latitude)
         const countryLong = parseFloat(country.longitude)
         this.globe.pointOfView({lat: countryLat, lng: countryLong}, 500);
+    }
+
+    updateGuessedCountries() {
+        const displayGuesses = document.getElementById('guessed-countries');
+        let orderedGuesses = [];
+        this.guessedCountries.forEach(item => {
+        });
     }
 }
 

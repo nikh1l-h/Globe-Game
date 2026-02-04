@@ -154,7 +154,7 @@
           "type": "Polygon",
           "arcs": [[-8, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111]],
           "id": "180",
-          "properties": { "name": "Dem. Rep. Congo" },
+          "properties": { "name": "Democratic Republic of the Congo" },
           "latitude": "0",
           "longitude": "25",
           "borderIds": [
@@ -218,7 +218,7 @@
           "type": "Polygon",
           "arcs": [[-133, 134]],
           "id": "214",
-          "properties": { "name": "Dominican Rep." },
+          "properties": { "name": "Dominican Republic" },
           "latitude": "19",
           "longitude": "-70.6667",
           "borderIds": ["332"]
@@ -684,7 +684,7 @@
           "type": "Polygon",
           "arcs": [[-108, 308, -286, -129, -121, 309]],
           "id": "140",
-          "properties": { "name": "Central African Rep." },
+          "properties": { "name": "Central African Republic" },
           "latitude": "7",
           "longitude": "21",
           "borderIds": ["120", "148", "178", "180", "728", "729"]
@@ -693,7 +693,7 @@
           "type": "Polygon",
           "arcs": [[-107, 310, 311, 312, -287, -309]],
           "id": "178",
-          "properties": { "name": "Congo" },
+          "properties": { "name": "Republic of the Congo" },
           "latitude": "-1",
           "longitude": "15",
           "borderIds": ["024", "120", "140", "180", "266"]
@@ -711,7 +711,7 @@
           "type": "Polygon",
           "arcs": [[-289, -315, 315]],
           "id": "226",
-          "properties": { "name": "Eq. Guinea" },
+          "properties": { "name": "Equatorial Guinea" },
           "latitude": "2",
           "longitude": "10",
           "borderIds": ["120", "266"]
@@ -1306,7 +1306,7 @@
           "type": "MultiPolygon",
           "arcs": [[[511]], [[512]], [[513]], [[514]], [[515]]],
           "id": "090",
-          "properties": { "name": "Solomon Is." },
+          "properties": { "name": "Solomon Islands" },
           "latitude": "-8",
           "longitude": "159",
           "borderIds": []
@@ -1555,7 +1555,6 @@
             [[568]],
             [[569]]
           ],
-          "id": "010",
           "properties": { "name": "Antarctica" },
           "latitude": "-90",
           "longitude": "0",
@@ -1642,7 +1641,7 @@
           "type": "Polygon",
           "arcs": [[-496, 586, 587]],
           "id": "070",
-          "properties": { "name": "Bosnia and Herz." },
+          "properties": { "name": "Bosnia and Herzegovina" },
           "latitude": "44",
           "longitude": "18",
           "borderIds": ["191", "499", "688"]
@@ -1696,7 +1695,7 @@
           "type": "Polygon",
           "arcs": [[-109, -310, -128, -579, -118, -586]],
           "id": "728",
-          "properties": { "name": "S. Sudan" },
+          "properties": { "name": "South Sudan" },
           "latitude": "8",
           "longitude": "30",
           "borderIds": ["140", "180", "231", "404", "729", "800"]

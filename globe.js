@@ -150,11 +150,16 @@ class Earth {
         this.globe.pointOfView({lat: countryLat, lng: countryLong}, 500);
     }
 
-    updateGuessedCountries() {
+    updateGuessedCountries(iso_code) {
+
+        const country = this.latLongData.find(item => item.id === iso_code);
+        const countryName = country.properties.name;
+
         const displayGuesses = document.getElementById('guessed-countries');
-        let orderedGuesses = [];
-        this.guessedCountries.forEach(item => {
-        });
+
+        const newListItem = document.createElement('li');
+        newListItem.innerText = countryName;
+        displayGuesses.appendChild(newListItem);
     }
 }
 

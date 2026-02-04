@@ -73,6 +73,7 @@ const nameToIso = {
     "car": "140",
     "central african republic": "140",
     "congo": "178",
+    "republic of the congo": "178",
     "gabon": "266",
     "equitorial guinea": "226",
     "zambia": "894",
@@ -170,7 +171,6 @@ const nameToIso = {
     "yemen": "887",
     "saudi": "682",
     "saudi arabia": "682",
-    "antarctica": "010",
     "cyprus": "196",
     "morocco": "504",
     "egypt": "818",
@@ -248,6 +248,7 @@ guessBox.addEventListener('keydown', (event) => {
             checkFirstGuess();
             newGlobe.AssignColourGivenDistance(countryCode);
             newGlobe.rotateCameraToCountry(countryCode);
+            newGlobe.updateGuessedCountries(countryCode);
             
         }
         

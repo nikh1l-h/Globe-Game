@@ -131,6 +131,8 @@ body {
     width:fit-content;
     height:fit-content;
     background-color: #f8ffd0;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 #time-track p, #score-track p {

@@ -123,7 +123,13 @@ body {
     font-weight: bold;
 }
 
-#guessed-countries {
+#time-track p, #score-track p {
+    margin: 0.2rem 0; /* top margin is set to 0.2, right set to 0. imagine trace rectangle syntax */
+    line-height: 1.1; 
+}
+
+
+#guessed-countries { /* guessed countries pop-up*/
     position: fixed;
     top: 50%;
     left: 80%;
@@ -135,10 +141,19 @@ body {
     padding-right: 1em;
 }
 
-#time-track p, #score-track p {
-    margin: 0.2rem 0; /* top margin is set to 0.2, right set to 0. imagine trace rectangle syntax */
-    line-height: 1.1; 
+#game-popup {
+    position: fixed;
+    top: 50%;
+    left:20%;
+    transform:translate(-50%,-50%);
+    width:fit-content;
+    max-width: 15em;
+    height:fit-content;
+    background-color:#d9ead3;
+    text-align:center;
 }
+
+
 
 /* Level Complete Pop-up */
 

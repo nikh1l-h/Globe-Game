@@ -47,5 +47,5 @@ class Clock {
 
 const timer = new Clock()
 timer.startTimer()
-timer.calcStartTime(5)
+timer.calcStartTime(1)
 

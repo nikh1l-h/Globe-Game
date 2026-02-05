@@ -225,10 +225,13 @@ for (const [id,action] of Object.entries(allButtons)) { // for every key-value p
 
 
 function convertCountryNametoCode(countryName) {
-    if (countryName in nameToIso) {
-        return nameToIso[countryName]
+    if (countryName in nameToIso) { // if name is valid
+        const id = nameToIso[countryName];
+        if ((newGlobe.guessedCountries).includes(id)) { // checks if country already guessed
+            return false
+        }
+        return id
     } else {
-        console.log('country not found')
         return false
     }
     
@@ -245,7 +248,6 @@ guessBox.addEventListener('keydown', (event) => {
         guessBox.value = ''; // resets the guessBox to remove user guess from screen
         let countryCode = convertCountryNametoCode(userGuess)
         if (countryCode != false) { // if guess is valid
-            checkFirstGuess();
             newGlobe.AssignColourGivenDistance(countryCode);
             newGlobe.rotateCameraToCountry(countryCode);
             newGlobe.updateGuessedCountries(countryCode);

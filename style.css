@@ -132,7 +132,7 @@ body {
 #guessed-countries { /* guessed countries pop-up*/
     position: fixed;
     top: 50%;
-    left: 80%;
+    left: 85%;
     transform: translate(-50%,-50%);
     width:fit-content;
     height:fit-content;
@@ -144,7 +144,7 @@ body {
 #game-popup {
     position: fixed;
     top: 50%;
-    left:20%;
+    left:15%;
     transform:translate(-50%,-50%);
     width:fit-content;
     max-width: 15em;

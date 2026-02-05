@@ -223,29 +223,17 @@ for (const [id,action] of Object.entries(allButtons)) { // for every key-value p
     element.addEventListener('click', action);
 }
 
-function showDoubleGuessError(iso_code) {
-    const popup = document.getElementById('game-popup')
-    if (popup.classList.contains('hidden')) {
-        togglePageVisibility('game-popup');
-        // this is because when the user successively does invalid guesses
-        // we do not want to hide the popup, it must be kept on screen
-    }
-    const country = newGlobe.latLongData.find(item => item.id === iso_code);
-    const countryName = country.properties.name;
-    const text = document.querySelector('#game-popup p b');
-    text.innerText = countryName.concat(' has already been guessed');
-}
-
 
 function convertCountryNametoCode(countryName) {
     if (countryName in nameToIso) { // if name is valid
         const id = nameToIso[countryName];
         if ((newGlobe.guessedCountries).includes(id)) { // checks if country already guessed
-            showDoubleGuessError(id);
+            popup.showDoubleGuessError(id);
             return false;
         }
         return id;
     } else {
+        popup.showUnknownCountryError();
         return false;
     }
     

@@ -87,7 +87,8 @@ class Earth {
             for (let i=0; i< borderIds.length; i++) {
                 if (borderIds[i] === this.mysteryCountryId) {
                     this.changeCountryColour(guessId,'#8f0013');
-                    return true
+                    popup.showAdjacentCountry(guessId);
+                    return true;
                 }
             }
         }

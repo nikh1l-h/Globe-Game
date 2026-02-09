@@ -77,7 +77,7 @@ class Earth {
         const distance = c * earthRadius;
         return distance;
     }
-
+    
     AssignColourGivenDistance(guessId) {
 
         // handling if user guess is adjacent to the answer

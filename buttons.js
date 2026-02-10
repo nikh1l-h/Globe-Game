@@ -217,7 +217,12 @@ const allButtons = { // lists the id of every button in the game and the action 
     },
     'tutorial-from-menu': () => changePage('menu','tutorial'),
     'menu-from-tutorial': () => changePage('tutorial', 'menu'),
-    'play-again': () => changePage('end-screen','menu')
+    'play-again': () => changePage('end-screen','menu'),
+    'next-level': () => {
+        togglePageVisibility('level-complete');
+        newGlobe.resetGlobe();
+    }
+
 }
 
 for (const [id,action] of Object.entries(allButtons)) { // for every key-value pair in allButtons list
@@ -243,6 +248,22 @@ function convertCountryNametoCode(countryName) {
 
 function checkFirstGuess() {
 
+}
+
+function displayLevelComplete() {
+    const levelComplete = document.getElementById('level-complete');
+    levelComplete.classList.remove('hidden');
+
+    // displaying what the mystery country was
+    // finding the name of the mystery country
+    const countryId = newGlobe.mysteryCountryId
+    const country = newGlobe.latLongData.find(item => item.id === countryId);
+    const countryName = country.properties.name;
+
+    // displaying the name of the mystery country
+    const displayMystery = document.getElementById('display-mystery-country');
+    displayMystery.innerText = 'The mystery country was '.concat(countryName);
+    
 }
 
 const guessBox = document.getElementById('guess-input');

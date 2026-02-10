@@ -44,8 +44,11 @@ class Earth {
         this.guessedCountries.forEach(item => {
             this.coloursMap[item] = 'grey'
         });
+        this.globe
+            .polygonsData(this.countryData)
+            .polygonCapColor(country => this.coloursMap[country.id])
         this.guessedCountries = [];
-        this.mysteryCountryId = null;
+        this.chooseMysteryCountry();
     }
 
     chooseMysteryCountry() {
@@ -98,6 +101,7 @@ class Earth {
         // handling if user guesses correctly
         if (distance === 0) { 
             this.changeCountryColour(guessId,'green');
+            displayLevelComplete();
             timer.stopTimer();
             return true // exits function early
         }
@@ -166,5 +170,5 @@ class Earth {
 
 const newGlobe = new Earth();
 newGlobe.init().then(() => {
-    newGlobe.chooseMysteryCountry();
+    newGlobe.mysteryCountryId = '250'
 });

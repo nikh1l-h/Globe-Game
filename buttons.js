@@ -77,7 +77,7 @@ const nameToIso = {
     "congo": "178",
     "republic of the congo": "178",
     "gabon": "266",
-    "equitorial guinea": "226",
+    "equatorial guinea": "226",
     "zambia": "894",
     "malawi": "454",
     "mozambique": "508",

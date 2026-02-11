@@ -48,9 +48,13 @@ class Earth {
         this.globe
             .polygonsData(this.countryData)
             .polygonCapColor(country => this.coloursMap[country.id])
-        this.guessedCountries = [];
-        this.updateGuessedCountries();
         this.chooseMysteryCountry();
+
+        // update guessed countries
+        this.guessedCountries = [];
+        const displayGuesses = document.getElementById('guessed-countries');
+        displayGuesses.innerHTML='<p><b>Guessed Countries:</p></b></p>';
+    
         // update level and time
         statsManager.level++;
         const newTime = timer.calcStartTime(statsManager.level);

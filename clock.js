@@ -1,8 +1,9 @@
 class Clock {
     constructor() {
 
-        this.timeLeft = 25; // 25 is FUN and POSSIBLE
+        this.timeLeft = 300;
         this.timerElement = document.getElementById('timer');
+        this.timerElement.innerText = '5:00'
         this.interval = null;
     }
 
@@ -20,7 +21,19 @@ class Clock {
         }
     }
 
+    convertSecsToMins(time) {
+        let seconds = (this.timeLeft % 60).toString();
+        const minutes = (Math.floor(this.timeLeft/ 60)).toString();
+        
+        if (seconds.length < 2) {
+            seconds = "0".concat(seconds);
+        };
+
+        this.timerElement.innerText = minutes.concat(":",seconds);
+    }
+
     startTimer() {
+        this.tick(); // initial tick before loop of waiting 1 second starts
         this.interval = setInterval(() => this.tick(),1000);
     }
 
@@ -30,14 +43,7 @@ class Clock {
 
     tick() {
         this.timeLeft--;
-        let seconds = (this.timeLeft % 60).toString();
-        const minutes = (Math.floor(this.timeLeft/ 60)).toString();
-        
-        if (seconds.length < 2) {
-            seconds = "0".concat(seconds);
-        };
-        this.timerElement.innerText = minutes.concat(":",seconds);
-
+        this.convertSecsToMins();
         if (this.timeLeft === 0) {
             this.stopTimer();
         };
@@ -45,7 +51,4 @@ class Clock {
     }
 }  
 
-const timer = new Clock()
-timer.startTimer()
-timer.calcStartTime(1)
-
+const timer = new Clock();

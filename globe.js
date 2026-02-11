@@ -41,6 +41,7 @@ class Earth {
     }
 
     resetGlobe() {
+        // update globe
         this.guessedCountries.forEach(item => {
             this.coloursMap[item] = 'grey'
         });
@@ -48,7 +49,12 @@ class Earth {
             .polygonsData(this.countryData)
             .polygonCapColor(country => this.coloursMap[country.id])
         this.guessedCountries = [];
+        this.updateGuessedCountries();
         this.chooseMysteryCountry();
+        // update level and time
+        statsManager.level++;
+        const newTime = timer.calcStartTime(statsManager.level);
+        timer.convertSecsToMins(newTime);
     }
 
     chooseMysteryCountry() {
@@ -170,5 +176,5 @@ class Earth {
 
 const newGlobe = new Earth();
 newGlobe.init().then(() => {
-    newGlobe.mysteryCountryId = '250'
+    newGlobe.chooseMysteryCountry();
 });

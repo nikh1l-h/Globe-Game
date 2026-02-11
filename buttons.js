@@ -247,7 +247,10 @@ function convertCountryNametoCode(countryName) {
 }
 
 function checkFirstGuess() {
-
+    if ((newGlobe.guessedCountries).length === 0) {
+        timer.startTimer();
+        timer.calcStartTime(statsManager.level);
+    } 
 }
 
 function displayLevelComplete() {
@@ -273,6 +276,7 @@ guessBox.addEventListener('keydown', (event) => {
         guessBox.value = ''; // resets the guessBox to remove user guess from screen
         let countryCode = convertCountryNametoCode(userGuess)
         if (countryCode != false) { // if guess is valid
+            checkFirstGuess();
             newGlobe.AssignColourGivenDistance(countryCode);
             newGlobe.rotateCameraToCountry(countryCode);
             newGlobe.updateGuessedCountries(countryCode);

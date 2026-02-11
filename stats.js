@@ -8,6 +8,7 @@ class Stats {
     calcGuessScore(distance) {
 
     }
-
-
 }
+
+const statsManager = new Stats();
+

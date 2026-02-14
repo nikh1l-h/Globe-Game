@@ -1,7 +1,8 @@
 class Stats {
     constructor() {
         this.level = 1;
-        this.score = 0
+        this.currentScore = 0
+        this.totalScore = 0
         this.completedLevels = {};
     }
 
@@ -30,11 +31,16 @@ class Stats {
         }
 
         addScore = Math.floor(addScore); // decimal scores aren't possible
-        this.score+=addScore;
+        this.currentScore+=addScore;
+        this.totalScore+=addScore;
 
-        // displaying the changes to score
+        // displaying the changes to score on HUD
         const displayScore = document.getElementById('score');
-        displayScore.innerText = this.score;
+        displayScore.innerText = this.totalScore;
+
+        // display the changes to score on popup
+        const displayPopupScore = document.getElementById('level-score-gained');
+        displayPopupScore.innerText = 'Score: '.concat(this.currentScore);
 
     }
 }

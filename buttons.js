@@ -271,7 +271,6 @@ function displayLevelComplete() {
     const timeTaken = timer.convertSecsToMins(timer.startTime-timer.timeLeft);
     const displayTime = document.getElementById('level-time-taken');
     displayTime.innerText = 'Time: '.concat(timeTaken);
-    
 }
 
 const guessBox = document.getElementById('guess-input');

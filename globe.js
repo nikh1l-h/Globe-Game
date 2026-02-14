@@ -60,6 +60,9 @@ class Earth {
         statsManager.level++;
         timer.calcStartTime(statsManager.level);
         timer.displayNewTime();
+
+        // update current score
+        statsManager.currentScore = 0;
     }
 
     chooseMysteryCountry() {

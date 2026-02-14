@@ -143,6 +143,7 @@ const nameToIso = {
     "switzerland": "756",
     "luxembourg": "442",
     "belgium": "056",
+    "holland":"528",
     "netherlands": "528",
     "portugal": "620",
     "spain": "724",
@@ -257,7 +258,6 @@ function displayLevelComplete() {
     const levelComplete = document.getElementById('level-complete');
     levelComplete.classList.remove('hidden');
 
-    // displaying what the mystery country was
     // finding the name of the mystery country
     const countryId = newGlobe.mysteryCountryId
     const country = newGlobe.latLongData.find(item => item.id === countryId);
@@ -271,6 +271,7 @@ function displayLevelComplete() {
     const timeTaken = timer.convertSecsToMins(timer.startTime-timer.timeLeft);
     const displayTime = document.getElementById('level-time-taken');
     displayTime.innerText = 'Time: '.concat(timeTaken);
+
 }
 
 const guessBox = document.getElementById('guess-input');

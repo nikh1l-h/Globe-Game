@@ -15,6 +15,8 @@ class Earth {
         this.currentDistance = null;
     }
 
+    
+
     async init() { // await and fetch is async therefore we must use init() to load country polygons rather than constructor
         const res = await fetch('globe-properties.json');
         this.world = await res.json();

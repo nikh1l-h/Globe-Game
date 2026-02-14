@@ -2,6 +2,7 @@ class Clock {
     constructor() {
 
         this.timeLeft = 300;
+        this.startTime = null;
         this.timerElement = document.getElementById('timer');
         this.timerElement.innerText = '5:00'
         this.interval = null;
@@ -19,17 +20,24 @@ class Clock {
         } else {
             this.timeLeft = 20;
         }
+
+        this.startTime = this.timeLeft;
     }
 
-    convertSecsToMins() {
-        let seconds = (this.timeLeft % 60).toString();
-        const minutes = (Math.floor(this.timeLeft/ 60)).toString();
+    convertSecsToMins(time) {
+        let seconds = (time % 60).toString();
+        const minutes = (Math.floor(time/ 60)).toString();
         
         if (seconds.length < 2) {
             seconds = "0".concat(seconds);
         };
 
-        this.timerElement.innerText = minutes.concat(":",seconds);
+        return minutes.concat(":",seconds);
+    }
+
+    displayNewTime() {
+        const out = this.convertSecsToMins(this.timeLeft);
+        this.timerElement.innerText = out;
     }
 
     startTimer() {
@@ -43,7 +51,7 @@ class Clock {
 
     tick() {
         this.timeLeft--;
-        this.convertSecsToMins();
+        this.displayNewTime();
         if (this.timeLeft === 0) {
             this.stopTimer();
         };

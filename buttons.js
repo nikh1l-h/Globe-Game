@@ -266,6 +266,11 @@ function displayLevelComplete() {
     // displaying the name of the mystery country
     const displayMystery = document.getElementById('display-mystery-country');
     displayMystery.innerText = 'The mystery country was '.concat(countryName);
+
+    // displaying time taken
+    const timeTaken = timer.convertSecsToMins(timer.startTime-timer.timeLeft);
+    const displayTime = document.getElementById('level-time-taken');
+    displayTime.innerText = 'Time: '.concat(timeTaken);
     
 }
 

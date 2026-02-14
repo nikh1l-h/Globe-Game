@@ -12,6 +12,7 @@ class Earth {
         this.coloursMap = {}; 
         this.guessedCountries = [];
         this.mysteryCountryId = null;
+        this.currentDistance = null;
     }
 
     async init() { // await and fetch is async therefore we must use init() to load country polygons rather than constructor
@@ -72,6 +73,7 @@ class Earth {
         const guess = this.latLongData.find(item => item.id === guessId); // finds all data for inputted country
         const mystery = this.latLongData.find(item => item.id === this.mysteryCountryId); // finds all data for the mystery country
         if (guess.id === mystery.id) {
+            this.currentDistance = 0;
             return 0 // user has guessed correctly, distance between countries is 0
         }
 
@@ -88,6 +90,7 @@ class Earth {
         const a = (Math.sin(deltaLat /2))**2 + Math.cos(guessLat) * Math.cos(mysteryLat)* (Math.sin(deltaLong/2))**2;
         const c = 2 * Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
         const distance = c * earthRadius;
+        this.currentDistance = distance;
         return distance;
     }
     

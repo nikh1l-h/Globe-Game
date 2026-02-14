@@ -285,6 +285,7 @@ guessBox.addEventListener('keydown', (event) => {
             newGlobe.AssignColourGivenDistance(countryCode);
             newGlobe.rotateCameraToCountry(countryCode);
             newGlobe.updateGuessedCountries(countryCode);
+            statsManager.calcGuessScore(newGlobe.currentDistance);
             
         }
         

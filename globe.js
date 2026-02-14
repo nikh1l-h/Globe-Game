@@ -57,8 +57,8 @@ class Earth {
     
         // update level and time
         statsManager.level++;
-        const newTime = timer.calcStartTime(statsManager.level);
-        timer.convertSecsToMins(newTime);
+        timer.calcStartTime(statsManager.level);
+        timer.convertSecsToMins(); // displays the new amount of time
     }
 
     chooseMysteryCountry() {

@@ -21,7 +21,7 @@ class Clock {
         }
     }
 
-    convertSecsToMins(time) {
+    convertSecsToMins() {
         let seconds = (this.timeLeft % 60).toString();
         const minutes = (Math.floor(this.timeLeft/ 60)).toString();
         

@@ -1,8 +1,7 @@
 class Stats {
     constructor() {
         this.level = 1;
-        this.currentScore = 0;
-        this.totalScore = 0;
+        this.score = 0
         this.completedLevels = {};
     }
 
@@ -10,21 +9,32 @@ class Stats {
         const numGuesses = (newGlobe.guessedCountries).length
         let addScore = 0
         if (distance === 0) { // the user has guessed correctly
-            addScore = (10000 - (300 * numGuesses));
-        } else {
+            if (numGuesses === 1) { // if user gets the country on their first guess
+                addScore = 40000; 
+            } else {
+                addScore = (20000 - (400 * numGuesses));
+            }
+            
+        } else { // if the user has NOT guessed correctly
             const guessRating = 1 - (distance / 20015); // 20015 = max distance between countries
-            console.log(guessRating)
-            addScore = Math.floor((1000*guessRating)/(numGuesses/5));
+            if (guessRating < 0.85) { // if the user is less than 85% close
+                addScore = 800 - (60*numGuesses) - (100/guessRating); // they get less points
+            } else{ // if the user is more than 85% close
+                addScore = 1500 - (60*numGuesses) - (80/guessRating); // they get more points
+            }
+            
         }
 
         if (addScore < 10) { // sets a minimum score to be added
             addScore = 10;
         }
-        this.currentScore+=addScore;
-        console.log(addScore);
 
+        addScore = Math.floor(addScore); // decimal scores aren't possible
+        this.score+=addScore;
+
+        // displaying the changes to score
         const displayScore = document.getElementById('score');
-        displayScore.innerText = this.currentScore;
+        displayScore.innerText = this.score;
 
     }
 }

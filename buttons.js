@@ -229,7 +229,7 @@ const allButtons = { // lists the id of every button in the game and the action 
     'copy-results': () => {
         const results = document.getElementById('final-stats');
         let out = results.innerText;
-        out = out.concat('\n\nCan you beat my score?\n\nPlay my game!');
+        out = out.concat('\n\nCan you beat my score?\n\nPlay at nikh1l-h.github.io/Globe-Game');
         navigator.clipboard.writeText(out);
 
     }

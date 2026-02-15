@@ -225,6 +225,13 @@ const allButtons = { // lists the id of every button in the game and the action 
     'next-level': () => {
         togglePageVisibility('level-complete');
         newGlobe.resetGlobe();
+    },
+    'copy-results': () => {
+        const results = document.getElementById('final-stats');
+        let out = results.innerText;
+        out = out.concat('\n\nCan you beat my score?\n\nPlay my game!');
+        navigator.clipboard.writeText(out);
+
     }
 
 }
@@ -311,6 +318,8 @@ function endGame() {
 function resetGame() {
     statsManager.resetStats();
     newGlobe.resetGlobe();
+    const finalStats = document.getElementById('final-stats');
+    finalStats.innerHTML = ''
 }
 
 const guessBox = document.getElementById('guess-input');

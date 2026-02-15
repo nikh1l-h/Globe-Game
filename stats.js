@@ -1,6 +1,6 @@
 class Stats {
     constructor() {
-        this.level = 10;
+        this.level = 1;
         this.currentScore = 0
         this.totalScore = 0
         this.completedLevels = {};

@@ -64,5 +64,5 @@ class Stats {
     }
 }
 
-const statsManager = new Stats();
+const statsManager = new Stats(); // creates new stats
 

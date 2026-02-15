@@ -54,6 +54,7 @@ class Clock {
         this.displayNewTime();
         if (this.timeLeft === 0) {
             this.stopTimer();
+            endGame();
         };
 
     }

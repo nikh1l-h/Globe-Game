@@ -4,6 +4,7 @@ class Stats {
         this.currentScore = 0
         this.totalScore = 0
         this.completedLevels = {};
+        this.displayScore = document.getElementById('score');
     }
 
     calcGuessScore(distance) {
@@ -35,13 +36,20 @@ class Stats {
         this.totalScore+=addScore;
 
         // displaying the changes to score on HUD
-        const displayScore = document.getElementById('score');
-        displayScore.innerText = this.totalScore;
+        (this.displayScore).innerText = this.totalScore;
 
         // display the changes to score on popup
         const displayPopupScore = document.getElementById('level-score-gained');
         displayPopupScore.innerText = 'Score: '.concat(this.currentScore);
 
+    }
+
+    resetStats() {
+        this.level = 0;
+        this.currentScore = 0;
+        this.totalScore = 0;
+        this.completedLevels = {}
+        this.displayScore.innerText = this.totalScore;
     }
 }
 

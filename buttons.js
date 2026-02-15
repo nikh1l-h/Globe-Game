@@ -218,7 +218,10 @@ const allButtons = { // lists the id of every button in the game and the action 
     },
     'tutorial-from-menu': () => changePage('menu','tutorial'),
     'menu-from-tutorial': () => changePage('tutorial', 'menu'),
-    'play-again': () => changePage('end-screen','menu'),
+    'play-again': () => {
+        changePage('end-screen','menu');
+        resetGame();
+    },
     'next-level': () => {
         togglePageVisibility('level-complete');
         newGlobe.resetGlobe();
@@ -249,8 +252,9 @@ function convertCountryNametoCode(countryName) {
 
 function checkFirstGuess() {
     if ((newGlobe.guessedCountries).length === 0) {
-        timer.startTimer();
         timer.calcStartTime(statsManager.level);
+        timer.startTimer();
+        
     } 
 }
 
@@ -272,6 +276,16 @@ function displayLevelComplete() {
     const displayTime = document.getElementById('level-time-taken');
     displayTime.innerText = 'Time: '.concat(timeTaken);
 
+}
+
+function endGame() {
+    changePage('gameplay-screen','end-screen');
+    togglePageVisibility('guessed-countries');
+}
+
+function resetGame() {
+    statsManager.resetStats();
+    newGlobe.resetGlobe();
 }
 
 const guessBox = document.getElementById('guess-input');

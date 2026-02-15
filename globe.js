@@ -121,6 +121,7 @@ class Earth {
             this.changeCountryColour(guessId,'green');
             displayLevelComplete();
             timer.stopTimer();
+            statsManager.updateCompLevels(guessId);
             return true // exits function early
         }
 

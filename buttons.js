@@ -281,6 +281,31 @@ function displayLevelComplete() {
 function endGame() {
     changePage('gameplay-screen','end-screen');
     togglePageVisibility('guessed-countries');
+
+    // displaying the correct country
+    const deathMessage = document.getElementById('death-message');
+    const country = newGlobe.latLongData.find(item => item.id === newGlobe.mysteryCountryId);
+    const countryName = country.properties.name;
+
+    deathMessage.innerText = 'The final country was '.concat(countryName);
+
+    // display the stats of every game played
+    const displayStats = document.getElementById('final-stats');
+    for (const [name,time] of Object.entries(statsManager.completedLevels)) {
+        const newListItem = document.createElement('p')
+        newListItem.innerText = '✅ '.concat(name,': ',time);
+        displayStats.appendChild(newListItem);
+    }
+
+    // display the X next to the country not guessed:
+    let item1 = document.createElement('p');
+    item1.innerText = '❌ '.concat(countryName);
+    displayStats.appendChild(item1);
+
+    let item2 = document.createElement('p');
+    item2.innerText = '💙 Score: '.concat((statsManager.totalScore).toString())
+    displayStats.appendChild(item2);
+
 }
 
 function resetGame() {

@@ -1,6 +1,6 @@
 class Stats {
     constructor() {
-        this.level = 1;
+        this.level = 10;
         this.currentScore = 0
         this.totalScore = 0
         this.completedLevels = {};
@@ -50,6 +50,17 @@ class Stats {
         this.totalScore = 0;
         this.completedLevels = {}
         this.displayScore.innerText = this.totalScore;
+    }
+
+    updateCompLevels(iso_code) {
+        // the name of the country is accessed
+        const country=newGlobe.latLongData.find(item => item.id===iso_code);
+        const countryName=country.properties.name;
+
+        // the time it took to find the country is accessed
+        const timeTaken = timer.convertSecsToMins(timer.startTime-timer.timeLeft);
+
+        this.completedLevels[countryName] = timeTaken;
     }
 }
 

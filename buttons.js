@@ -325,7 +325,7 @@ function resetGame() {
 const guessBox = document.getElementById('guess-input');
 guessBox.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') { // checks for user finishing their guess
-        let userGuess = guessBox.value.toLowerCase();
+        let userGuess = guessBox.value.toLowerCase().trim();
         guessBox.value = ''; // resets the guessBox to remove user guess from screen
         let countryCode = convertCountryNametoCode(userGuess)
         if (countryCode != false) { // if guess is valid

@@ -54,8 +54,7 @@ class Stats {
 
     updateCompLevels(iso_code) {
         // the name of the country is accessed
-        const country=newGlobe.latLongData.find(item => item.id===iso_code);
-        const countryName=country.properties.name;
+        const countryName = newGlobe.getCountryName(iso_code);
 
         // the time it took to find the country is accessed
         const timeTaken = timer.convertSecsToMins(timer.startTime-timer.timeLeft);

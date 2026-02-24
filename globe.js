@@ -176,8 +176,7 @@ class Earth {
 
     updateGuessedCountries(iso_code) {
 
-        const country = this.latLongData.find(item => item.id === iso_code);
-        const countryName = country.properties.name;
+        const countryName = this.getCountryName(iso_code);
 
         const displayGuesses = document.getElementById('guessed-countries');
 

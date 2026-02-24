@@ -270,9 +270,7 @@ function displayLevelComplete() {
     levelComplete.classList.remove('hidden');
 
     // finding the name of the mystery country
-    const countryId = newGlobe.mysteryCountryId
-    const country = newGlobe.latLongData.find(item => item.id === countryId);
-    const countryName = country.properties.name;
+    const countryName = newGlobe.getCountryName(newGlobe.mysteryCountryId);
 
     // displaying the name of the mystery country
     const displayMystery = document.getElementById('display-mystery-country');
@@ -291,8 +289,7 @@ function endGame() {
 
     // displaying the correct country
     const deathMessage = document.getElementById('death-message');
-    const country = newGlobe.latLongData.find(item => item.id === newGlobe.mysteryCountryId);
-    const countryName = country.properties.name;
+    const countryName = newGlobe.getCountryName(newGlobe.mysteryCountryId);
 
     deathMessage.innerText = 'The final country was '.concat(countryName);
 

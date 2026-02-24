@@ -24,14 +24,12 @@ class GamePopup {
                 clearInterval(this.interval);
             } else {
                 this.time--;
-                console.log(this.time)
             } 
         }, 1000);
     }
 
     showDoubleGuessError(iso_code) {
-        const country=newGlobe.latLongData.find(item => item.id === iso_code);
-        const countryName = country.properties.name;
+        const countryName = newGlobe.getCountryName(iso_code);
         const message = countryName.concat(' has already been guessed');
         this.updatePopup(message);
     }
@@ -41,8 +39,7 @@ class GamePopup {
     }
 
     showAdjacentCountry(iso_code) {
-        const country=newGlobe.latLongData.find(item => item.id===iso_code);
-        const countryName=country.properties.name;
+        const countryName = newGlobe.getCountryName(iso_code);
         const message = countryName.concat(' is adjacent to the answer!');
         this.updatePopup(message);
     }

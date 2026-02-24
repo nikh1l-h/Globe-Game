@@ -185,6 +185,11 @@ class Earth {
         newListItem.innerText = countryName;
         displayGuesses.appendChild(newListItem);
     }
+
+    getCountryName(iso_code) {
+        const country = this.latLongData.find(item => item.id === iso_code);
+        return country.properties.name;
+    }
 }
 
 const newGlobe = new Earth();

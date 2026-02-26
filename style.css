@@ -58,13 +58,13 @@ body {
     justify-content: center;
     align-items: center;
     height: 100dvh;
-    gap: 3%
+    gap: 2%
 }
 
 #tutorial button {
     font-size: 150%;
     border-radius: 10px;
-    min-width: 20%;
+    min-width: 25%;
     transition-duration: 0.2s;
     cursor: pointer;
 }
@@ -85,6 +85,10 @@ body {
     text-align: center;
     margin: 0;
     width: 50%
+}
+
+#tutorial img {
+    max-height: 30%;
 }
 
 /* GAMEPLAY SCREEN */

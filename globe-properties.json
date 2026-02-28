@@ -777,7 +777,7 @@
           "properties": { "name": "Israel" },
           "latitude": "31.5",
           "longitude": "34.75",
-          "borderIds": ["818", "400", "422", "760"]
+          "borderIds": ["818", "400", "422", "760","275"]
         },
         {
           "type": "Polygon",
@@ -1228,7 +1228,7 @@
           "properties": { "name": "Albania" },
           "latitude": "41",
           "longitude": "20",
-          "borderIds": ["300", "499", "807", "688"]
+          "borderIds": ["300", "499", "807", "688","383"]
         },
         {
           "type": "Polygon",
@@ -1585,7 +1585,7 @@
           "properties": { "name": "Egypt" },
           "latitude": "27",
           "longitude": "30",
-          "borderIds": ["376", "434", "729"]
+          "borderIds": ["376", "434", "729","275"]
         },
         {
           "type": "Polygon",
@@ -1653,7 +1653,7 @@
           "properties": { "name": "North Macedonia" },
           "latitude": "41.8333",
           "longitude": "22",
-          "borderIds": ["008", "100", "300", "688"]
+          "borderIds": ["008", "100", "300", "688","383"]
         },
         {
           "type": "Polygon",
@@ -1662,7 +1662,7 @@
           "properties": { "name": "Serbia" },
           "latitude": "44",
           "longitude": "21",
-          "borderIds": ["008", "070", "100", "191", "348", "499", "807", "642"]
+          "borderIds": ["008", "070", "100", "191", "348", "499", "807", "642","383"]
         },
         {
           "type": "Polygon",
@@ -1671,7 +1671,7 @@
           "properties": { "name": "Montenegro" },
           "latitude": "42",
           "longitude": "19",
-          "borderIds": ["008", "070", "191", "688"]
+          "borderIds": ["008", "070", "191", "688","383"]
         },
         {
           "type": "Polygon",

@@ -1,6 +1,6 @@
 /* GENERAL */
 
-.hidden {
+.hidden { /*applied to screens that should not be shown to the user */
     display: none !important;
 }
 
@@ -31,13 +31,13 @@ body {
     font-size: 200%;
     border-radius: 10px;
     min-width: 25%;
-    transition-duration: 0.2s;
-    cursor: pointer;
+    transition-duration: 0.2s; /* takes 0.2s for the button to animate to the stylings it should have when the user hovers over it*/
+    cursor: pointer; /* changes the cursor to look like a pointer when the user hovers over the button*/
 }
 
 #menu button:hover {
     background-color: #f9cb9c;
-    min-width: 30%;
+    min-width: 30%; 
 }
 
 #menu h1 {
@@ -105,7 +105,7 @@ body {
     display: flex;
     width: 100%;
     min-height: 10vh;
-    justify-content: center;
+    justify-content: center; /* aligns elements on the horizontal axis*/
     align-items: flex-end; /* align items by their bottom edges */
     gap: 10rem;
     margin-top: 1em;
@@ -133,16 +133,16 @@ body {
 }
 
 #time-track p, #score-track p {
-    margin: 0.2rem 0; /* top margin is set to 0.2, right set to 0. imagine trace rectangle syntax */
+    margin: 0.2rem 0; /* top margin is set to 0.2, right set to 0. */
     line-height: 1.1; 
 }
 
-
-#guessed-countries { /* guessed countries pop-up*/
-    position: fixed;
+/*GUESSED COUNTRIES POP-UP*/
+#guessed-countries { 
+    position: fixed; /* makes the position on the screen constant, even when user scrolls or other elements exist*/
     top: 50%;
-    left: 85%;
-    transform: translate(-50%,-50%);
+    left: 85%; /* pop-up is pushed to start 85% of the way into the screen*/
+    transform: translate(-50%,-50%); /* above code aligns by top right corner, this line shifts axis so they will be aligned by central point*/
     width:fit-content;
     height:fit-content;
     background-color: #f8ffd0;
@@ -150,7 +150,8 @@ body {
     padding-right: 1em;
 }
 
-#game-popup {
+/*POP-UP FOR INFORMATION GIVEN TO USER (e.g. 'Country not found' or 'X is adjacent...')*/
+#game-popup { 
     position: fixed;
     top: 50%;
     left:15%;
@@ -164,7 +165,7 @@ body {
 
 
 
-/* Level Complete Pop-up */
+/* LEVEL COMPLETE POP-UP */
 
 #level-complete {
     position: fixed;
@@ -222,7 +223,7 @@ body {
     font-weight: 700;
 }
 
-/* End Screen */
+/* END SCREEN */
 
 #end-screen {
     display: flex;

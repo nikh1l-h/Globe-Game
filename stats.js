@@ -1,16 +1,16 @@
 class Stats {
     constructor() {
         this.level = 1;
-        this.currentScore = 0
-        this.totalScore = 0
-        this.completedLevels = {};
+        this.currentScore = 0 // stores the score user has gained in current level
+        this.totalScore = 0 // scores total level
+        this.completedLevels = {}; // obj of country name: time taken for every level completed
         this.displayScore = document.getElementById('score');
     }
 
     calcGuessScore(distance) {
-        const numGuesses = (newGlobe.guessedCountries).length
-        let addScore = 0
-        if (distance === 0) { // the user has guessed correctly
+        const numGuesses = (newGlobe.guessedCountries).length;
+        let addScore = 0; // addscore = amount of score to add for that guess
+        if (distance === 0) { // if the user has guessed correctly
             if (numGuesses === 1) { // if user gets the country on their first guess
                 addScore = 40000; 
             } else {
@@ -36,15 +36,15 @@ class Stats {
         this.totalScore+=addScore;
 
         // displaying the changes to score on HUD
-        (this.displayScore).innerText = this.totalScore;
+        (this.displayScore).innerText = this.totalScore; // HUD shows total score
 
         // display the changes to score on popup
         const displayPopupScore = document.getElementById('level-score-gained');
-        displayPopupScore.innerText = 'Score: '.concat(this.currentScore);
+        displayPopupScore.innerText = 'Score: '.concat(this.currentScore); // popup only shows score gained from completed level
 
     }
 
-    resetStats() {
+    resetStats() { // everything is reset if the user starts the game again
         this.level = 0;
         this.currentScore = 0;
         this.totalScore = 0;
@@ -52,7 +52,7 @@ class Stats {
         this.displayScore.innerText = this.totalScore;
     }
 
-    updateCompLevels(iso_code) {
+    updateCompLevels(iso_code) { // updates the completed levels when a new guess is made
         // the name of the country is accessed
         const countryName = newGlobe.getCountryName(iso_code);
 
@@ -63,5 +63,5 @@ class Stats {
     }
 }
 
-const statsManager = new Stats(); // creates new stats
+const statsManager = new Stats(); 
 

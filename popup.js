@@ -2,16 +2,16 @@ class GamePopup {
     constructor() {
         this.popup = document.getElementById('game-popup');
         this.popupText = document.querySelector('#game-popup p b');
-        this.time = 0;
+        this.time = 0; // stores how much more time the popup should be on the screen for
         this.interval = null
     }
 
     updatePopup(text) {
-        this.popupText.innerText = text;
-        this.time = 5;
+        this.popupText.innerText = text; 
+        this.time = 5; // sets the popup so it will be visible for 5 seconds
 
-        if ((this.popup).classList.contains('hidden')) {
-            togglePageVisibility('game-popup');
+        if ((this.popup).classList.contains('hidden')) { // if popup is not already visible:
+            togglePageVisibility('game-popup'); // show the popup and start the timer
             this.startTimer();
         };
         
@@ -19,16 +19,16 @@ class GamePopup {
 
     startTimer() {
         this.interval = setInterval(() => {
-            if (this.time === 0) {
-                togglePageVisibility('game-popup'); // hides the popup after 5 seconds
+            if (this.time === 0) { 
+                togglePageVisibility('game-popup'); // hides the popup if it has no time left
                 clearInterval(this.interval);
             } else {
-                this.time--;
+                this.time--; // decrements time left if != 0
             } 
-        }, 1000);
+        }, 1000); // 1000ms = repeats every second until time left = 0
     }
 
-    showDoubleGuessError(iso_code) {
+    showDoubleGuessError(iso_code) { // displays an error if the user guesses same country twice
         const countryName = newGlobe.getCountryName(iso_code);
         const message = countryName.concat(' has already been guessed');
         this.updatePopup(message);
@@ -38,7 +38,7 @@ class GamePopup {
         this.updatePopup('Country not found');
     }
 
-    showAdjacentCountry(iso_code) {
+    showAdjacentCountry(iso_code) { // displays a message if the user guesses adjacent country
         const countryName = newGlobe.getCountryName(iso_code);
         const message = countryName.concat(' is adjacent to the answer!');
         this.updatePopup(message);

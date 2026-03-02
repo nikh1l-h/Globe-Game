@@ -1,4 +1,4 @@
-const nameToIso = {
+const nameToIso = { // obj of the names(s) of every country: the corresponding iso code
     "fiji": "242",
     "tanzania": "834",
     "western sahara": "732",
@@ -206,6 +206,84 @@ function changePage(currentPageid,nextPageid) { // swaps what page is on screen
     togglePageVisibility(nextPageid);
 };
 
+function convertCountryNametoCode(countryName) { 
+    if (countryName in nameToIso) { // if name is valid
+        const id = nameToIso[countryName];
+        if ((newGlobe.guessedCountries).includes(id)) { // checks if country already guessed
+            popup.showDoubleGuessError(id); //show the error that they have guessed it already
+            return false; // returns false so that the guess will not be computed further
+        }
+        return id; // guess is valid, so id is returned
+    } else {
+        popup.showUnknownCountryError();
+        return false; // returns false so the guess will not be computed further
+    }
+    
+}
+
+function checkFirstGuess() { // checks if the guess just made is the first one
+    if ((newGlobe.guessedCountries).length === 0) {
+        timer.calcStartTime(statsManager.level);
+        timer.startTimer();
+        
+    } 
+}
+
+function displayLevelComplete() {
+    const levelComplete = document.getElementById('level-complete');
+    levelComplete.classList.remove('hidden'); // shows level complete screen
+
+    // finding the name of the mystery country
+    const countryName = newGlobe.getCountryName(newGlobe.mysteryCountryId);
+
+    // displaying the name of the mystery country
+    const displayMystery = document.getElementById('display-mystery-country');
+    displayMystery.innerText = 'The mystery country was '.concat(countryName);
+
+    // displaying time taken
+    const timeTaken = timer.convertSecsToMins(timer.startTime-timer.timeLeft);
+    const displayTime = document.getElementById('level-time-taken');
+    displayTime.innerText = 'Time: '.concat(timeTaken);
+
+}
+
+function endGame() {
+    changePage('gameplay-screen','end-screen'); // page changes to the final screen
+    togglePageVisibility('guessed-countries');
+
+    // displaying the country that they failed to guess
+    const deathMessage = document.getElementById('death-message');
+    const countryName = newGlobe.getCountryName(newGlobe.mysteryCountryId);
+
+    deathMessage.innerText = 'The final country was '.concat(countryName);
+
+    // display the stats of every game played
+    const displayStats = document.getElementById('final-stats');
+    for (const [name,time] of Object.entries(statsManager.completedLevels)) { // converts all data about completing levels to a 2d array which can be iterated through
+        const newListItem = document.createElement('p')
+        newListItem.innerText = '✅ '.concat(name,': ',time);
+        displayStats.appendChild(newListItem);
+    }
+
+    // display the X next to the country not guessed:
+    let item1 = document.createElement('p');
+    item1.innerText = '❌ '.concat(countryName);
+    displayStats.appendChild(item1);
+
+    // display their final score
+    let item2 = document.createElement('p');
+    item2.innerText = '💙 Score: '.concat((statsManager.totalScore).toString())
+    displayStats.appendChild(item2);
+
+}
+
+function resetGame() { // resets everything so that the game can be played again
+    statsManager.resetStats();
+    newGlobe.resetGlobe();
+    const finalStats = document.getElementById('final-stats');
+    finalStats.innerHTML = ''
+}
+
 
 const allButtons = { // lists the id of every button in the game and the action that they should do
     'play-from-menu': () => {
@@ -230,102 +308,27 @@ const allButtons = { // lists the id of every button in the game and the action 
         const results = document.getElementById('final-stats');
         let out = results.innerText;
         out = out.concat('\n\nCan you beat my score?\n\nPlay at nikh1l-h.github.io/Globe-Game');
-        navigator.clipboard.writeText(out);
+        navigator.clipboard.writeText(out); // writes the output message to user's clipboard
 
     }
 
 }
 
 for (const [id,action] of Object.entries(allButtons)) { // for every key-value pair in allButtons list
-    const element = document.getElementById(id);
-    element.addEventListener('click', action);
+    const element = document.getElementById(id); 
+    element.addEventListener('click', action); // add an event listener for when it is clicked
 }
 
 
-function convertCountryNametoCode(countryName) {
-    if (countryName in nameToIso) { // if name is valid
-        const id = nameToIso[countryName];
-        if ((newGlobe.guessedCountries).includes(id)) { // checks if country already guessed
-            popup.showDoubleGuessError(id);
-            return false;
-        }
-        return id;
-    } else {
-        popup.showUnknownCountryError();
-        return false;
-    }
-    
-}
 
-function checkFirstGuess() {
-    if ((newGlobe.guessedCountries).length === 0) {
-        timer.calcStartTime(statsManager.level);
-        timer.startTimer();
-        
-    } 
-}
-
-function displayLevelComplete() {
-    const levelComplete = document.getElementById('level-complete');
-    levelComplete.classList.remove('hidden');
-
-    // finding the name of the mystery country
-    const countryName = newGlobe.getCountryName(newGlobe.mysteryCountryId);
-
-    // displaying the name of the mystery country
-    const displayMystery = document.getElementById('display-mystery-country');
-    displayMystery.innerText = 'The mystery country was '.concat(countryName);
-
-    // displaying time taken
-    const timeTaken = timer.convertSecsToMins(timer.startTime-timer.timeLeft);
-    const displayTime = document.getElementById('level-time-taken');
-    displayTime.innerText = 'Time: '.concat(timeTaken);
-
-}
-
-function endGame() {
-    changePage('gameplay-screen','end-screen');
-    togglePageVisibility('guessed-countries');
-
-    // displaying the correct country
-    const deathMessage = document.getElementById('death-message');
-    const countryName = newGlobe.getCountryName(newGlobe.mysteryCountryId);
-
-    deathMessage.innerText = 'The final country was '.concat(countryName);
-
-    // display the stats of every game played
-    const displayStats = document.getElementById('final-stats');
-    for (const [name,time] of Object.entries(statsManager.completedLevels)) {
-        const newListItem = document.createElement('p')
-        newListItem.innerText = '✅ '.concat(name,': ',time);
-        displayStats.appendChild(newListItem);
-    }
-
-    // display the X next to the country not guessed:
-    let item1 = document.createElement('p');
-    item1.innerText = '❌ '.concat(countryName);
-    displayStats.appendChild(item1);
-
-    let item2 = document.createElement('p');
-    item2.innerText = '💙 Score: '.concat((statsManager.totalScore).toString())
-    displayStats.appendChild(item2);
-
-}
-
-function resetGame() {
-    statsManager.resetStats();
-    newGlobe.resetGlobe();
-    const finalStats = document.getElementById('final-stats');
-    finalStats.innerHTML = ''
-}
-
+// handling the input box
 const guessBox = document.getElementById('guess-input');
 guessBox.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') { // checks for user finishing their guess
-        let userGuess = guessBox.value.toLowerCase().trim();
-        guessBox.value = ''; // resets the guessBox to remove user guess from screen
-        let countryCode = convertCountryNametoCode(userGuess)
-        if (countryCode != false) { // if guess is valid
+    if (event.key === 'Enter') { // checks for user finishing their guess by pressing enter
+        let userGuess = guessBox.value.toLowerCase().trim(); // input is sanitised
+        guessBox.value = ''; // resets the guessBox to remove user guess from the text window
+        let countryCode = convertCountryNametoCode(userGuess);
+        if (countryCode != false) { // if guess is valid. countryCode = false if it is not valid
             checkFirstGuess();
             newGlobe.AssignColourGivenDistance(countryCode);
             newGlobe.rotateCameraToCountry(countryCode);

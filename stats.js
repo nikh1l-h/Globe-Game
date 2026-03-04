@@ -59,7 +59,7 @@ class Stats {
         // the time it took to find the country is accessed
         const timeTaken = timer.convertSecsToMins(timer.startTime-timer.timeLeft);
 
-        this.completedLevels[countryName] = timeTaken;
+        this.completedLevels[countryName] = timeTaken; // new dict element is made, country name: time took to guess
     }
 }
 

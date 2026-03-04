@@ -25,7 +25,7 @@ class Clock { // class for everything related to the timer in my game
     }
 
     convertSecsToMins(time) {
-        let seconds = (time % 60).toString();
+        let seconds = (time % 60).toString(); // % 60 = remainder after dividing by 60 to find mins, hence we have seconds
         const minutes = (Math.floor(time/ 60)).toString();
         
         if (seconds.length < 2) { // seconds must be 2 digit 
@@ -50,9 +50,9 @@ class Clock { // class for everything related to the timer in my game
     }
 
     tick() {
-        this.timeLeft--;
-        this.displayNewTime();
-        if (this.timeLeft === 0) {
+        this.timeLeft--; // clock ticks (time decrements)
+        this.displayNewTime(); // the new amount of time the user has is shown
+        if (this.timeLeft === 0) { // checks if the user has ran out of time
             this.stopTimer();
             endGame(); // if time runs out, immediately end the game
         };

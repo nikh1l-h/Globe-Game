@@ -8,10 +8,10 @@ class Earth { // this class stores everything related to the globe itself
             .height(Math.floor(window.innerHeight*0.9)) // sets the height to take up 90% of the user's screen vertically
             .globeImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-blue-marble.jpg');
         
-        this.countryData = null;
-        this.coloursMap = {}; 
+        this.countryData = null; // this will be set in init method
+        this.coloursMap = {}; // this wil store the colour that every country should be
         this.guessedCountries = [];
-        this.mysteryCountryId = null;
+        this.mysteryCountryId = null; // will store the iso numeric code of the mystery country after it has been selected
         this.currentDistance = null; // stores the distance of the most recent guess to the mystery country
     }
 
@@ -30,7 +30,7 @@ class Earth { // this class stores everything related to the globe itself
         this.globe
             .polygonsData(this.countryData)
             .polygonStrokeColor(() => '#ffffff')
-            .polygonAltitude(0.01)
+            .polygonAltitude(0.01) // makes the polygon slightly outward from the face of the globe
             .polygonSideColor(() => '#ffffff')
             .polygonCapColor(country => this.coloursMap[country.id]); // passes country into the colourmap to assign colour
     }
@@ -110,7 +110,7 @@ class Earth { // this class stores everything related to the globe itself
                 if (borderIds[i] === this.mysteryCountryId) { // if the ids match, then the countries are bordering
                     this.changeCountryColour(guessId,'#8f0013'); // this colour can only be seen for adjacent guesses
                     popup.showAdjacentCountry(guessId);
-                    return true; // exits function early
+                    return true; // exits function early because distance does not NEED to be calculated or shown to user
                 }
             }
         }
@@ -138,12 +138,12 @@ class Earth { // this class stores everything related to the globe itself
 
         // calculating the colour it should be
         if (guessRating >= 0.5) { // if guess is better than 50% good:
-            let multiplier = (guessRating-0.5) * 2; // expresses guessRating as a % how close from the middle of the gradient to the end
+            let multiplier = (guessRating-0.5) * 2; // multiplier is a % how close from the middle of the gradient to the end
             r = midRGB[0] + Math.floor(midToFinalRGBChange[0] * multiplier); 
             g = midRGB[1] + Math.floor(midToFinalRGBChange[1] * multiplier);
             b = midRGB[2] + Math.floor(midToFinalRGBChange[2] * multiplier); 
         } else { // if guess is less than 50% good
-            let multiplier = guessRating*2;
+            let multiplier = guessRating*2; // multiplier is a % how close from the start of the gradient to the middle
             r = startRGB[0] + Math.floor(startToMidRGBChange[0] * multiplier)
             g = startRGB[1] + Math.floor(startToMidRGBChange[1]*multiplier);
             b = startRGB[2] + Math.floor(startToMidRGBChange[2]*multiplier);
@@ -186,7 +186,7 @@ class Earth { // this class stores everything related to the globe itself
     }
 
     getCountryName(iso_code) { // finds the name of a country given its iso numeric code
-        const country = this.latLongData.find(item => item.id === iso_code);
+        const country = this.latLongData.find(item => item.id === iso_code); 
         return country.properties.name;
     }
 }

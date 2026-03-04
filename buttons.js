@@ -202,8 +202,8 @@ function togglePageVisibility(pageid) {
 
 
 function changePage(currentPageid,nextPageid) { // swaps what page is on screen
-    togglePageVisibility(currentPageid);
-    togglePageVisibility(nextPageid);
+    togglePageVisibility(currentPageid); // page that is currently shown is toggled, so hidden
+    togglePageVisibility(nextPageid); // hidden page is toggled to be shown
 };
 
 function convertCountryNametoCode(countryName) { 
@@ -222,7 +222,7 @@ function convertCountryNametoCode(countryName) {
 }
 
 function checkFirstGuess() { // checks if the guess just made is the first one
-    if ((newGlobe.guessedCountries).length === 0) {
+    if ((newGlobe.guessedCountries).length === 0) { // if nothing else is in guessedCountries, it must be the first guess
         timer.calcStartTime(statsManager.level);
         timer.startTimer();
         
@@ -249,7 +249,7 @@ function displayLevelComplete() {
 
 function endGame() {
     changePage('gameplay-screen','end-screen'); // page changes to the final screen
-    togglePageVisibility('guessed-countries');
+    togglePageVisibility('guessed-countries'); // guessed countries pop-up must also be hidden as it is not included in gameplay screen section
 
     // displaying the country that they failed to guess
     const deathMessage = document.getElementById('death-message');
@@ -259,10 +259,10 @@ function endGame() {
 
     // display the stats of every game played
     const displayStats = document.getElementById('final-stats');
-    for (const [name,time] of Object.entries(statsManager.completedLevels)) { // converts all data about completing levels to a 2d array which can be iterated through
-        const newListItem = document.createElement('p')
-        newListItem.innerText = '✅ '.concat(name,': ',time);
-        displayStats.appendChild(newListItem);
+    for (const [name,time] of Object.entries(statsManager.completedLevels)) { // converts all data about completing levels to a 2d array which is iterated through
+        const newListItem = document.createElement('p') // new p element for each level the user has completed
+        newListItem.innerText = '✅ '.concat(name,': ',time); // name of the country and how long it took to guess is shown
+        displayStats.appendChild(newListItem); // the complete line is then added to HTML of the end screen
     }
 
     // display the X next to the country not guessed:
@@ -281,14 +281,14 @@ function resetGame() { // resets everything so that the game can be played again
     statsManager.resetStats();
     newGlobe.resetGlobe();
     const finalStats = document.getElementById('final-stats');
-    finalStats.innerHTML = ''
+    finalStats.innerHTML = '' // all stats from previous game (p elements) are deleted
 }
 
 
 const allButtons = { // lists the id of every button in the game and the action that they should do
     'play-from-menu': () => {
         changePage('menu','gameplay-screen');
-        togglePageVisibility('guessed-countries');
+        togglePageVisibility('guessed-countries'); // guessed countries pop-up must also be hidden
     },
     'play-from-tutorial': () => {
         changePage('tutorial','gameplay-screen');
@@ -298,16 +298,16 @@ const allButtons = { // lists the id of every button in the game and the action 
     'menu-from-tutorial': () => changePage('tutorial', 'menu'),
     'play-again': () => {
         changePage('end-screen','menu');
-        resetGame();
+        resetGame(); // game resets after the user presses to play again
     },
     'next-level': () => {
         togglePageVisibility('level-complete');
-        newGlobe.resetGlobe();
+        newGlobe.resetGlobe(); // globe is reset because a new mystery country must be selected
     },
     'copy-results': () => {
         const results = document.getElementById('final-stats');
         let out = results.innerText;
-        out = out.concat('\n\nCan you beat my score?\n\nPlay at nikh1l-h.github.io/Globe-Game');
+        out = out.concat('\n\nCan you beat my score?\n\nPlay at nikh1l-h.github.io/Globe-Game'); // \n = new line
         navigator.clipboard.writeText(out); // writes the output message to user's clipboard
 
     }

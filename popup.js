@@ -6,7 +6,7 @@ class GamePopup {
         this.interval = null
     }
 
-    updatePopup(text) {
+    updatePopup(text) { // general method that displays on the screen the string that is passed in
         this.popupText.innerText = text; 
         this.time = 5; // sets the popup so it will be visible for 5 seconds
 
@@ -21,7 +21,7 @@ class GamePopup {
         this.interval = setInterval(() => {
             if (this.time === 0) { 
                 togglePageVisibility('game-popup'); // hides the popup if it has no time left
-                clearInterval(this.interval);
+                clearInterval(this.interval); // stops the timer so it does not become negative
             } else {
                 this.time--; // decrements time left if != 0
             } 

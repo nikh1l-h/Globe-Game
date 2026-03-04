@@ -18,10 +18,10 @@ body {
 /* MENU*/ 
 
 #menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: flex; /* allows for flexbox to be used which gives great control over spacing of elements*/
+    flex-direction: column; /*every HTML element will be stacked vertically in a column rather than side by side*/
+    justify-content: center; /*everything is aligned to the center of the screen*/
+    align-items: center; /* every item in the vertical column is aligned vertically in relation to each other*/
     gap: 20px;
     height: 100dvh;
     max-height: 100dvh;
